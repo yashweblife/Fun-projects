@@ -1,6 +1,4 @@
-import {Canvas} from "./lib/Canvas.js"
-import { Vector } from "./lib/Vector.js";
-import {Graph} from "./Graph/Graph.js"
+import { Graph } from "./Graph/Graph.js";
 
 const graph = new Graph(); 
 document.body.append(graph.canvas.canvas)
