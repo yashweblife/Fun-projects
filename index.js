@@ -1,10 +1,19 @@
-import { Graph } from "./Graph/Graph.js";
+import {Body} from "./Physics/Body.js"
+import {Vertex} from "./Physics/Vertex.js"
+import {Canvas} from "./lib/Canvas.js"
 
-const graph = new Graph(); 
-document.body.append(graph.canvas.canvas)
+var canvas = new Canvas()
+document.body.append(canvas.canvas)
+var v_arr = [
+    new Vertex(0,0),
+    new Vertex(100,0),
+    new Vertex(100,100),
+    new Vertex(0,100),
+]
 
-graph.plotScatter({x:100,y:100},"t1","red")
-graph.plotScatter({x:200,y:50},"t2","green")
-graph.plotScatter({x:300,y:100},"t1","red")
-graph.plotScatter({x:400,y:100},"t2","green")
-graph.drawLine();
+
+var b = new Body(v_arr);
+b.pos.x = 20;
+b.pos.y = 20;
+b.draw(canvas.ctx)
+console.log(b.bounds)
