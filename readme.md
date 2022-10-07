@@ -1,25 +1,15 @@
-# Fun Projects
+# 🚀 Welcome to your new awesome project!
 
-This repo is a curation of fun programming concepts for people to use and learn from.
+This project has been created using **webpack-cli**, you can now run
 
-## implimentations
-- [X] A Simple Vector Library
-- [X] A Simple Canvas Library 
-- [X] A Simple Graph Library
-- [ ] Simple Physics Library
-- [ ] Ball Dynamics
-- [ ] Genetic Algo
-- [ ] Linear Regression
-- [ ] Image Classification from scratch
-- [ ] Seeking Behaviour
-- [ ] Flocking Behaviour
-- [ ] Vector Fields
-- [ ] Bubble Sort
-- [ ] Quick Sort
-- [ ] A Simple Text Compression
-- [ ] Pixel Art Maker
-- [ ] Brownean Motion
-- [ ] Binary Tree
-- [ ] Linked List
-- [ ] A more complex turely random Random Number Generator
-- [ ] Ray Casting
+```
+npm run build
+```
+
+or
+
+```
+yarn build
+```
+
+to bundle your application
