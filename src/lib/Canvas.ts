@@ -1,4 +1,4 @@
-class Canvas{
+export class Canvas{
     public dom:HTMLCanvasElement;
     public ctx:CanvasRenderingContext2D;
     public width:number;
