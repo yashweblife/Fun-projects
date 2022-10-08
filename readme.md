@@ -3,9 +3,13 @@
 This repo is a curation of fun programming concepts for people to use and learn from.
 
 ## implimentations
-- [ ] A Simple Vector Library
-- [ ] A Simple Canvas Library 
-- [ ] A Simple Graph Library
+- [X] A Simple Vector Library
+- [X] A Simple Canvas Library 
+- [X] A Simple Graph Library
+- [X] A Simple Camera Library
+- [X] A Simple Mouse Library
+- [X] A Simple Keyboard Library
+- [X] A Simple Geometry Library
 - [ ] Simple Physics Library
 - [ ] Ball Dynamics
 - [ ] Genetic Algo
