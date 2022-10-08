@@ -96,17 +96,30 @@ export class Vector{
     public cross = (a:Vector)=>{
         return((this.x*a.x) - (this.y*a.y))
     }
+    public dist = (a:Vector)=>{
+        return(Math.sqrt((this.x-a.x)**2 + (this.y-a.y)**2))
+    }
+    public setMag = (a:number)=>{
+        this.normalize()
+        this.scalar(a);
+    }
     /**
      * Creates a random Vector
      * @param min Number
      * @param max Number
      * @returns A random Vector
      */
-    public static rand = (min:number, max:number):Vector=>{
+    public static randSIgned = (min:number, max:number):Vector=>{
         const x = ((Math.random()-0.5)*max)+min;
         const y = ((Math.random()-0.5)*max)+min;
         return(new Vector(x,y))
     }
+    public static rand = (min:number, max:number):Vector=>{
+        const x = ((Math.random())*max)+min;
+        const y = ((Math.random())*max)+min;
+        return(new Vector(x,y))
+    }
+    
     /**
      * Rotates Vector, preserves magnitude
      * @param angle Number
