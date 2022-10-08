@@ -72,8 +72,13 @@ export class Vector{
      * Sets vector to unit vector
      */
     public normalize = ()=>{
-        this.x = this.x/this.mag
-        this.y = this.y/this.mag
+        if(this.mag == 0){
+            this.x=0;
+            this.y=0;
+        }else{
+            this.x = this.x/this.mag
+            this.y = this.y/this.mag
+        }
         this.recalib()
     }
     /**
@@ -106,7 +111,12 @@ export class Vector{
      * Rotates Vector, preserves magnitude
      * @param angle Number
      */
-    public rotate = (angle:number)=>{}
+    public rotate = (angle:number)=>{
+        var sin = Math.sin(angle), cos=Math.cos(angle);
+        this.x = this.x * cos - this.y*sin
+        this.y = this.x * sin + this.y*cos
+        
+    }
     /**
      * Clones the Vector
      * @returns cloned Vector
