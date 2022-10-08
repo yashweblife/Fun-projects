@@ -1,0 +1,63 @@
+import {Canvas} from "../lib/Canvas"
+import { Ball } from "../lib/Ball";
+import { Vector } from "../lib/Vector";
+
+
+class BallGroup{
+    private balls:Ball[]
+    constructor(canvas:Canvas, size:number=10){
+        this.balls = Ball.generate(size,0,canvas.width);
+    }
+    public handleCollision = ()=>{
+        for(var i =0;i<this.balls.length;i++){
+            for(var j =0;j<this.balls.length;j++){
+                if(i!=j){
+                    const b1 = this.balls[i]
+                    const b2 = this.balls[j]
+                    if(b1.dist(b2) < (b1.size + b2.size)){
+                        const nVec = new Vector(b1.pos.x-b2.pos.x, b1.pos.y-b2.pos.y);
+                        nVec.setMag(1)
+                        b1.acc = nVec
+                    }
+                }
+            }
+
+        }
+    }
+    public update = ()=>{
+        this.balls.forEach((b:Ball)=>{
+            b.update();
+        })
+    }
+    public bound = (canvas:Canvas)=>{
+        this.balls.forEach((b:Ball)=>{
+            b.bound(canvas,{x:false,y:false});
+        })
+    }
+    public draw = (canvas:Canvas)=>{
+        this.balls.forEach((b:Ball)=>{
+            b.draw(canvas);
+        })
+    }
+}
+export class CollisionDetectionDemo{
+    private canvas:Canvas;
+    private balls:BallGroup;
+    constructor(parent:HTMLElement){
+        this.canvas = new Canvas()
+        parent.append(this.canvas.dom);
+        this.balls=new BallGroup(this.canvas, 100)
+    }
+    private animate = ()=>{
+        this.canvas.clear()
+        this.balls.handleCollision()
+        this.balls.update()
+        this.balls.bound(this.canvas)
+        this.balls.draw(this.canvas);
+        requestAnimationFrame(this.animate)
+    }
+    public app = ()=>{
+        this.animate()
+    }
+
+}
