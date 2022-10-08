@@ -11,9 +11,13 @@ export class Canvas{
     public ctx:CanvasRenderingContext2D;
     public width:number;
     public height:number;
-    constructor(canvas:HTMLCanvasElement = document.createElement("canvas")){
+    constructor(canvas:HTMLCanvasElement = document.createElement("canvas"), width=300, height=300){
         this.dom = canvas;
+        this.dom.width = width;
+        this.dom.height= height;
         this.ctx = this.dom.getContext('2d')!;
+        this.width = this.dom.width
+        this.height = this.dom.height
     }
 
     public circle = ({pos=new Vector(0,0), radius=5, fillColor="red",strokeColor="black", stroke=false, fill=true}:CircleInterface)=>{
@@ -34,8 +38,10 @@ export class Canvas{
         if(fill===true) this.ctx.fill();
         if(stroke===true) this.ctx.stroke();
     }
-    public reverseRect = ({pos, size, fillColor, strokeColor, stroke, fill, angle})=>{}
+    //public reverseRect = ({pos, size, fillColor, strokeColor, stroke, fill, angle})=>{}
     public drawPath = ()=>{}
-    public clear = ()=>{}
+    public clear = ()=>{
+        this.ctx.clearRect(0,0,this.width,this.height)
+    }
     
 }
