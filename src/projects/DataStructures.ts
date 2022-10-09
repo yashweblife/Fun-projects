@@ -13,7 +13,7 @@ class LinkedNode{
     }
     public remove = (data:any)=>{
         if(this.data == data){
-            const newList = 
+            const newList = "";
         }
         if(this.next){
             const pre = this.next 
