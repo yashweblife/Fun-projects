@@ -13,7 +13,7 @@ export class Ball{
         this.pos = pos
         this.vel = new Vector()
         this.acc = new Vector()
-        this.mass = 1 //Math.random()*2
+        this.mass = Math.random()
         this.size = (Math.random()*10)+2;
         this.color = `rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)})`
         this.forces = [];
@@ -30,7 +30,7 @@ export class Ball{
             })
         }
         this.vel.add(this.acc)
-        this.vel.scalar(0.99)
+        this.vel.scalar(0.9)
         this.pos.add(this.vel)
         this.acc.scalar(0)
     }

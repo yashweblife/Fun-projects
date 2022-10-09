@@ -16,8 +16,11 @@ class BallGroup{
                     const b2 = this.balls[j]
                     if(b1.dist(b2) < (b1.size + b2.size)){
                         const nVec = new Vector(b1.pos.x-b2.pos.x, b1.pos.y-b2.pos.y);
-                        nVec.setMag(1)
+                        const mVec = new Vector(b2.pos.x-b1.pos.x, b2.pos.y-b1.pos.y);
+                        nVec.scalar(b2.mass)
+                        mVec.scalar(b1.mass)
                         b1.acc = nVec
+                        b2.acc = mVec
                     }
                 }
             }

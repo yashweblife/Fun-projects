@@ -17,7 +17,6 @@ export class GravityDemo{
             this.balls.push(b)
         }
     }
-
     private animate = ()=>{
         this.canvas.clear()
         this.balls.forEach((b:Ball)=>{

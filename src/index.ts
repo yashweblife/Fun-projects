@@ -1,4 +1,6 @@
 import { CollisionDetectionDemo } from "./projects/CollisionDetection"
 import {GravityDemo} from "./projects/Gravity"
-const g = new GravityDemo(document.body)
+import {CompressorDemo} from "./projects/Compression"
+
+const g = new CompressorDemo(document.body)
 g.app()
