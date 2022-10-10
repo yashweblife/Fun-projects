@@ -4,13 +4,22 @@
     padding:0;
     box-sizing: border-box;
 }
+.primary{
+    color:white;
+    background-color: rgb(98, 208, 255);
+}
 header{
     width: 100%;
     padding:1em;
     background-color: rgb(35, 35, 35);
     color:white;
-    >h1{
-        font-size: 1.5em;
+    >.toolbar{
+        >.title{
+            font-size: 1.5em;
+        }
+        >.buttons{
+            order:3;
+        }
     }
 }
 .card-holder{
@@ -20,45 +29,74 @@ header{
     padding:1em;
 }
 .card{
-    width:100%;
+    width:clamp(300px, 100%, 400px);
     padding:1em;
-    box-shadow: 0 0 1em 0 rgba(0,0,0,0.5);
+    box-shadow: 0 0 2em 0 rgba(0,0,0,0.8);
     margin:1em;
-    border-radius: 1em;
+    border-radius: 2em;
+    background-color: rgb(32,32,32);
+    color:white;
     >.card-header{
         display: flex;
-        >.card-toolbar{
-            display:grid;
-            grid-template-columns: 1fr 8fr 1fr;
-            .start{
-                order:-1;
-            }
-            .end{
-                order: 1;
-            }
-            >.title{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            >.rank{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                aspect-ratio: 1/1;
-                border-radius: 50%;
-            }
-        }
     }
 }
 
+
+.toolbar{
+    display:grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    align-items: center;
+    .start{
+        order:-1;
+    }
+    .end{
+        order: 1;
+    }
+    >.title{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2em;
+    }
+    >.rank{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+    }
+}
+.buttons{
+    display: flex;
+    flex-wrap: wrap;
+    >button{
+        margin: 0.5em;
+    }
+}
 button{
     border:0;
-    padding:1em;
+    padding:0.1em 1em;
     background-color: white;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
     &:active{
         background-color: rgb(77, 255, 246);
-        color:black
+        color:black;
+    }
+    .start{
+        order:-1
+    }
+    .end{
+        order:1
+    }
+    &.circular{
+        border-radius: 50%;
+    aspect-ratio: 1/1;
 
+    }
+    &.rounded{
+        border-radius: 1em;
     }
 }
