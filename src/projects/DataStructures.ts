@@ -34,8 +34,12 @@ class LinkedList{
     }
     public copy = ()=>{}
 }
-
-
+class StackNode{}
+class Stack{}
+class QueueNode{}
+class Queue{}
+class HeapNode{}
+class Heap{}
 class TreeNode{
     public data:any
     public left:TreeNode|undefined
@@ -68,21 +72,21 @@ export class BinaryTree{
     public addData = (data:any)=>{
         this.root.addData(data)
     }
-    public traverseInOrder = (node:TreeNode)=>{
+    public traverseInOrder = (node:TreeNode|undefined)=>{
         var cNode = node;
         if(cNode){
             this.traverseInOrder(cNode.left)
-            console.log(node.data)
+            console.log(cNode.data)
             this.traverseInOrder(cNode.right);
         }
     }
     public traverse = ()=>{
         const arr:any = []
-        const tin = (node:TreeNode)=>{
+        const tin = (node:TreeNode|undefined)=>{
             var cNode = node;
             if(cNode){
                 tin(cNode.left)
-                arr.push(node.data)
+                arr.push(cNode.data)
                 tin(cNode.right);
             }
         }
@@ -90,3 +94,7 @@ export class BinaryTree{
         console.log(arr)
     }
 }
+
+class GraphEdge{}
+class GraphNode{}
+class Graph{}
