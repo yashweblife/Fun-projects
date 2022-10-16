@@ -1,5 +1,16 @@
-class Point{}
+import { Vector } from "../lib/Vector";
 
-class Chart{}
+class Point{
+    private pos:Vector;
+    constructor(){}
+    public draw = ()=>{
+
+    }
+}
+
+class Chart{
+    private data:[]
+    constructor(){}
+}
 
 class LinearRegressionDemo{}
