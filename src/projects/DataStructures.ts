@@ -35,9 +35,21 @@ class LinkedList{
     public copy = ()=>{}
 }
 class StackNode{}
-class Stack{}
+class Stack{
+    private size:number = 0;
+    public push = ()=>{}
+    public pop = ()=>{}
+    public top = ()=>{}
+    public getSize = ()=>{}
+}
 class QueueNode{}
-class Queue{}
+class Queue{
+    private size:number = 0;
+    public push = ()=>{}
+    public pop = ()=>{}
+    public top = ()=>{}
+    public getSize = ()=>{}
+}
 class HeapNode{}
 class Heap{}
 class TreeNode{
