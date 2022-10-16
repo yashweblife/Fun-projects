@@ -2,6 +2,10 @@ import {Canvas} from "../lib/Canvas"
 import { Vector } from "../lib/Vector"
 import {Ball} from "../lib/Ball"
 
+class GeoCentric{}
+class FreeFall{}
+
+
 export class GravityDemo{
     private canvas:Canvas
     private balls:Ball[]
