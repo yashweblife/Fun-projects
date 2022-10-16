@@ -2,6 +2,10 @@ interface UniqueInterface{
     value:string;
     occurance:number[]
 }
+
+class TextCompression{}
+class ImageCompression{}
+
 export class CompressorDemo{
     private textArea:HTMLTextAreaElement;
     constructor(parent:HTMLElement){
