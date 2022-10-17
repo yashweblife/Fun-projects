@@ -119,7 +119,15 @@ export class Vector{
         const y = ((Math.random())*max)+min;
         return(new Vector(x,y))
     }
-    
+    public static VecFromSub = (b1:Vector,b2:Vector)=>{
+        return(new Vector((b1.x-b2.x, b1.y-b2.y)))
+    }
+    public static VecFromAdd = (b1:Vector,b2:Vector)=>{
+        return(new Vector((b1.x+b2.x, b1.y+b2.y)))
+    }
+    public static getNormalized = (v:Vector)=>{
+        return(new Vector(v.x/v.mag, v.y/v.mag))
+    }
     /**
      * Rotates Vector, preserves magnitude
      * @param angle Number
