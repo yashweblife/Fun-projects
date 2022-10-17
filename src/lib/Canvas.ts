@@ -19,7 +19,12 @@ export class Canvas{
         this.width = this.dom.width
         this.height = this.dom.height
     }
-
+    public setSize = (w:number,h:number)=>{
+        this.dom.width = w
+        this.dom.height = h
+        this.width=w;
+        this.height=h;
+    }
     public circle = ({pos=new Vector(0,0), radius=5, fillColor="red",strokeColor="black", stroke=false, fill=true}:CircleInterface)=>{
         this.ctx.beginPath()
         this.ctx.fillStyle = fillColor;
