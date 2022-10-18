@@ -110,8 +110,8 @@ export class Vector{
      * @returns A random Vector
      */
     public static randSIgned = (min:number, max:number):Vector=>{
-        const x = ((Math.random()-0.5)*max)+min;
-        const y = ((Math.random()-0.5)*max)+min;
+        const x = ((Math.random()-0.5)*max);
+        const y = ((Math.random()-0.5)*max);
         return(new Vector(x,y))
     }
     public static rand = (min:number, max:number):Vector=>{
