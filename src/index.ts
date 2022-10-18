@@ -1,6 +1,5 @@
 import "./styles/index.scss"
-import {GravityDemo} from "./projects/Gravity"
+import {GeneticAlgoDemo} from './projects/GeneticAlgo'
 
-const simul = new GravityDemo(document.body)
-
-simul.app()
+const p = new GeneticAlgoDemo(document.body)
+p.app()
