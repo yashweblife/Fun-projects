@@ -14,6 +14,10 @@ export class Ball {
   color: string;
   forces: Vector[];
   mass: number;
+  /**
+   * Create a new ball object by passing a position.
+   * @param pos 
+   */
   constructor(pos: Vector) {
     this.pos = pos;
     this.vel = new Vector();
@@ -25,19 +29,36 @@ export class Ball {
     )},${Math.floor(Math.random() * 255)})`;
     this.forces = [];
   }
+  /**
+   * ## Attraction Behaviour
+   * Attracts the ball to another ball
+   * @param b Ball to get attracted to
+   */
   public attract = (b: Ball) => {
     var nVec = Vector.VecFromSub(this.pos, b.pos);
     nVec.scalar(0.1);
     this.addForce(nVec);
   };
+  /**
+   * Add a force to the list of forces acting on the ball
+   * @param vec Vector
+   */
   public addForce1 = (vec: Vector) => {
     vec.scalar(this.mass);
     this.forces.push(vec);
   };
+  /**
+   * Add a force directly to the balls current acceleration state
+   * @param vec Vector
+   */
   public addForce = (vec: Vector) => {
     vec.scalar(this.mass);
     this.acc.add(vec);
   };
+  /**
+   * ## General physics stuff
+   * TODO: Make it time dependant
+   */
   public update = () => {
     if (this.forces.length > 0) {
       this.forces.forEach((v: Vector) => {
@@ -49,6 +70,10 @@ export class Ball {
     this.pos.add(this.vel);
     this.acc.scalar(0);
   };
+  /**
+   * ## Bounding box
+   * Create a bounding box for the ball and define its behaviour
+   */
   public bound = (
     c: Canvas,
     type: { x: Boolean; y: Boolean } = { x: false, y: false }
@@ -88,6 +113,10 @@ export class Ball {
       }
     }
   };
+  /**
+   * Draw the ball
+   * @param c Canvas
+   */
   public draw = (c: Canvas) => {
     c.circle({
       pos: this.pos,
@@ -95,12 +124,30 @@ export class Ball {
       fillColor: this.color,
     });
   };
-  public dist = (b: Ball) => {
+  /**
+   * ## Find distance between 2 ball
+   * @param b Ball s
+   * @returns number(distance)
+   */
+  public dist = (b: Ball):number => {
     return this.pos.dist(b.pos);
   };
-  public static random = (min: number, max: number) => {
+  /**
+   * Returns a ball with random position
+   * @param min 
+   * @param max 
+   * @returns 
+   */
+  public static random = (min: number, max: number):Ball => {
     return new Ball(Vector.rand(min, max));
   };
+  /**
+   * Generates a list of random balls
+   * @param num 
+   * @param min 
+   * @param max 
+   * @returns 
+   */
   public static generate = (num: number, min: number, max: number): Ball[] => {
     const balls: Ball[] = [];
     for (var i = 0; i < num; i++) {
