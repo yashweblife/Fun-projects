@@ -1,6 +1,11 @@
 import { Vector } from "./Vector";
 import { Canvas } from "./Canvas";
-
+/**
+ * ## Ball
+ * The Ball class represents a physics object with various properties.
+ * It has a position, vel, acc, parameter to keep track of motion.
+ * It also has other parameters that affect its appearance.
+ */
 export class Ball {
   pos: Vector;
   vel: Vector;
