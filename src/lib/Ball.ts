@@ -53,7 +53,7 @@ export class Ball {
    */
   public addForce = (vec: Vector) => {
     vec.scalar(this.mass);
-    this.acc.add(vec);
+    this.acc = vec;
   };
   /**
    * ## General physics stuff
