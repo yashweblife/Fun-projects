@@ -2,7 +2,10 @@ import {Canvas} from "../lib/Canvas"
 import { Ball } from "../lib/Ball";
 import { Vector } from "../lib/Vector";
 
-
+/**
+ * ## Ball Group
+ * A simpler/concentrated way to manage the balls in this simulation.
+ */
 class BallGroup{
     private balls:Ball[]
     constructor(canvas:Canvas, size:number=10){
@@ -42,6 +45,14 @@ class BallGroup{
         })
     }
 }
+/**
+ * ## Collision Detection
+ * This simulation takes a look at the idea of collisions and the physics behind it.
+ * In the case of balls, the idea is simple: 
+ * - Take a look at the distance between the balls
+ * - If the distance is less than or equal to sum of the radius of the balls, its valid
+ *     - Find the direction vector of the ball relative to the other one, reverse it and multiply a scalar to it. 
+ */
 export class CollisionDetectionDemo{
     private canvas:Canvas;
     private balls:BallGroup;
