@@ -120,10 +120,14 @@ export class Vector{
         return(new Vector(x,y))
     }
     public static VecFromSub = (b1:Vector,b2:Vector)=>{
-        return(new Vector((b1.x-b2.x, b1.y-b2.y)))
+        const x = b2.x - b1.x
+        const y = b2.y - b1.y
+        return(new Vector(x, y))
     }
     public static VecFromAdd = (b1:Vector,b2:Vector)=>{
-        return(new Vector((b1.x+b2.x, b1.y+b2.y)))
+        const x = b2.x + b1.x
+        const y = b2.y + b1.y
+        return(new Vector(x, y))
     }
     public static getNormalized = (v:Vector)=>{
         return(new Vector(v.x/v.mag, v.y/v.mag))
