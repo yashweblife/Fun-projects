@@ -1,7 +1,11 @@
 import {Canvas} from "../lib/Canvas"
 import { Vector } from "../lib/Vector"
 import {Ball} from "../lib/Ball"
-
+/**
+ * ## Geocentric
+ * This refers to the observed way of how gravity works, where things are attracted to 
+ * each other based on the distance between them and their masses. 
+ */
 class GeoCentric{
     public canvas:Canvas;
     public balls:Ball[];
@@ -58,6 +62,10 @@ class GeoCentric{
         this.animate()
     }
 }
+/**
+ * Free fall is what we observe in video games, especially 2D.
+ * This is where things fall onto the ground. 
+ */
 class FreeFall{
     private canvas:Canvas
     private balls:Ball[]
