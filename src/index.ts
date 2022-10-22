@@ -1,5 +1,5 @@
 import "./styles/index.scss"
-import {GeneticAlgoDemo} from './projects/GeneticAlgo'
+import {RopeDemo} from './projects/Rope'
 
-const p = new GeneticAlgoDemo(document.body)
+const p = new RopeDemo(document.body)
 p.app()
