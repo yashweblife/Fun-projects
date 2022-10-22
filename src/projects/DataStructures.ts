@@ -1,3 +1,8 @@
+/**
+ * ## Linked Node
+ * A node for linked lists
+ * It contains data and a reference to the nect node.
+ */
 class LinkedNode{
     public data:any;
     public next:LinkedNode;
@@ -20,6 +25,11 @@ class LinkedNode{
         }
     }
 }
+
+/**
+ * ## Linked List
+ * Linked lists are like game levels, you have to go through each level to proceed forward.
+ */
 class LinkedList{
     public data:any[]
     public root:LinkedNode
@@ -35,6 +45,7 @@ class LinkedList{
     public copy = ()=>{}
 }
 class StackNode{}
+
 class Stack{
     private size:number = 0;
     public push = ()=>{}
