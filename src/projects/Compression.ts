@@ -5,7 +5,15 @@ interface UniqueInterface{
 
 class TextCompression{}
 class ImageCompression{}
-
+/**
+ * ## Compression
+ * Compression here refers to a method of reducing the amount of data.
+ * There are 2 main concepts for compression.
+ * - Lossless compression
+ * This refers to the idea of preserving the original detail of the context.
+ * - Lossy compression
+ * This refers to the idea of reducing the amount of data at the cost of detail.
+ */
 export class CompressorDemo{
     private textArea:HTMLTextAreaElement;
     constructor(parent:HTMLElement){
