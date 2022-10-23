@@ -4,7 +4,10 @@ export class Mouse{
     pos:Vector;
     click:Boolean = false;
     offset:Vector;
-    constructor(){}
+    public mass:1
+    constructor(){
+        this.pos = new Vector();
+    }
     public handleMove = (e:MouseEvent)=>{
         this.pos.x = e.x;
         this.pos.y = e.y;
@@ -18,6 +21,10 @@ export class Mouse{
     }
     public handleUp = (e:MouseEvent)=>{
         this.click = false;
+    }
+    public move = (e:MouseEvent)=>{
+        this.pos.x = e.x
+        this.pos.y = e.y
     }
 
 }
