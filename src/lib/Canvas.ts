@@ -43,6 +43,13 @@ export class Canvas{
         if(fill===true) this.ctx.fill();
         if(stroke===true) this.ctx.stroke();
     }
+    public line = (v1:Vector,v2:Vector) =>{
+        this.ctx.beginPath()
+        this.ctx.moveTo(v1.x, v1.y)
+        this.ctx.lineTo(v2.x, v2.y)
+        this.ctx.closePath()
+        this.ctx.stroke();
+    }
     //public reverseRect = ({pos, size, fillColor, strokeColor, stroke, fill, angle})=>{}
     public drawPath = ()=>{}
     public clear = ()=>{
