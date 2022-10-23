@@ -1,5 +1,6 @@
 import { Vector } from "./Vector";
 import { Canvas } from "./Canvas";
+import {Mouse} from "./Mouse";
 /**
  * ## Ball
  * The Ball class represents a physics object with various properties.
@@ -23,7 +24,7 @@ export class Ball {
     this.vel = new Vector();
     this.acc = new Vector();
     this.size = Math.random() * 10 + 2;
-    this.mass = this.size * 0.01;
+    this.mass = this.size * 100;
     this.color = `rgb(${Math.floor(Math.random() * 255)},${Math.floor(
       Math.random() * 255
     )},${Math.floor(Math.random() * 255)})`;
@@ -34,11 +35,40 @@ export class Ball {
    * Attracts the ball to another ball
    * @param b Ball to get attracted to
    */
-  public attract = (b: Ball) => {
+  public attractGravo = (b: Ball|Mouse) => {
     var nVec = Vector.VecFromSub(this.pos, b.pos);
-    nVec.scalar(0.1);
+    var dist = this.pos.dist(b.pos)
+    var f = 0.1
+    if(dist==0){
+      dist=this.size;
+    }
+    nVec.normalize();
+    nVec.scalar(f*(this.mass)/(dist**2));
     this.addForce(nVec);
   };
+  public repelGravo = (b: Ball|Mouse) => {
+    var nVec = Vector.VecFromAdd(this.pos, b.pos);
+    var dist = this.pos.dist(b.pos)
+    var f = 0.1
+    if(dist==0){
+      dist=this.size;
+    }
+    nVec.normalize();
+    nVec.scalar(f*(this.mass)/(dist**2));
+    this.addForce(nVec);
+  };
+  public attract = (b:Ball|Mouse, f:number=0.9)=>{
+    var nVec = Vector.VecFromSub(this.pos, b.pos);
+    nVec.normalize()
+    nVec.scalar(f)
+    this.addForce(nVec);
+  }
+  public repel = (b:Ball|Mouse, f:number=0.9)=>{
+    var nVec = Vector.VecFromSub(b.pos, this.pos);
+    nVec.normalize()
+    nVec.scalar(f)
+    this.addForce(nVec);
+  }
   /**
    * Add a force to the list of forces acting on the ball
    * @param vec Vector
@@ -52,8 +82,8 @@ export class Ball {
    * @param vec Vector
    */
   public addForce = (vec: Vector) => {
-    vec.scalar(this.mass);
-    this.acc = vec;
+    //vec.scalar(this.mass);
+    this.acc.add(vec);
   };
   /**
    * ## General physics stuff
