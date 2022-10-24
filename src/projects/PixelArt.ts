@@ -10,3 +10,5 @@ class Pixel {
   private color: string;
   constructor() {}
 }
+
+export class PixelArtDemo{}
