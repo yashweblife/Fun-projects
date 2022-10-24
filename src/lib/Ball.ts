@@ -1,16 +1,14 @@
 import { Vector } from "./Vector";
 import { Canvas } from "./Canvas";
 import { Mouse } from "./Mouse";
+import { PhysicsObject } from "./PhysicsObject";
 /**
  * ## Ball
  * The Ball class represents a physics object with various properties.
  * It has a position, vel, acc, parameter to keep track of motion.
  * It also has other parameters that affect its appearance.
  */
-export class Ball {
-  pos: Vector;
-  vel: Vector;
-  acc: Vector;
+export class Ball extends PhysicsObject {
   size: number;
   color: string;
   forces: Vector[];
@@ -20,6 +18,7 @@ export class Ball {
    * @param pos
    */
   constructor(pos: Vector) {
+    super();
     this.pos = pos;
     this.vel = new Vector();
     this.acc = new Vector();
@@ -46,6 +45,10 @@ export class Ball {
     nVec.scalar((f * this.mass) / dist ** 2);
     this.addForce(nVec);
   };
+  /**
+   * ## Repulsion Behaviour
+   * Repels a physics object
+   */
   public repelGravo = (b: Ball | Mouse) => {
     var nVec = Vector.VecFromAdd(this.pos, b.pos);
     var dist = this.pos.dist(b.pos);
@@ -157,7 +160,7 @@ export class Ball {
   };
   public drawVel = (c: Canvas) => {
     const vel: Vector = Vector.VecFromAdd(this.pos, this.vel);
-    vel.scalar(1.1)
+    vel.scalar(1.1);
     c.line(this.pos, vel);
   };
   /**
