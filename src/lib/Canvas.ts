@@ -55,5 +55,10 @@ export class Canvas{
     public clear = ()=>{
         this.ctx.clearRect(0,0,this.width,this.height)
     }
+    public fadeClear = ()=>{
+        this.ctx.fillStyle = "rgba(255,255,255,0.01)"
+        this.ctx.rect(0,0,this.width,this.height)
+        this.ctx.fill()
+    }
     
 }
