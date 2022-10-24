@@ -7,99 +7,52 @@
 canvas{
     box-shadow: 0 0 1em 0 rgba(0,0,0,0.5);
 }
-.primary{
-    color:white;
-    background-color: rgb(98, 208, 255);
-}
 header{
-    width: 100%;
-    padding:1em;
-    background-color: rgb(35, 35, 35);
-    color:white;
-    >.toolbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0.5em;
         >.title{
-            font-size: 1.5em;
-        }
-        >.buttons{
-            order:3;
+        width:100%;
+    }
+    >.buttons{
+        display: flex;
+        align-items: center;
+        button{
+            margin:0 1em;
         }
     }
 }
-.card-holder{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding:1em;
-}
-.card{
-    width:clamp(300px, 100%, 400px);
-    padding:1em;
-    box-shadow: 0 0 2em 0 rgba(0,0,0,0.8);
+
+main{
     margin:1em;
-    border-radius: 2em;
-    background-color: rgb(32,32,32);
-    color:white;
-    >.card-header{
-        display: flex;
+    >.card-holder{
+        >.card{
+            width:clamp(300px, 100%, 400px);
+            box-shadow: 0 0 1em 0 rgba(0,0,0,0.5);
+            border-radius: 1em;
+            padding:1em;
+            margin:1em 0;
+        }
     }
 }
 
-
-.toolbar{
-    display:grid;
-    grid-template-columns: 1fr 8fr 1fr;
-    align-items: center;
-    .start{
-        order:-1;
-    }
-    .end{
-        order: 1;
-    }
-    >.title{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2em;
-    }
-    >.rank{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        aspect-ratio: 1/1;
-        border-radius: 50%;
-    }
-}
-.buttons{
-    display: flex;
-    flex-wrap: wrap;
-    >button{
-        margin: 0.5em;
-    }
-}
 button{
+    background-color: transparent;
     border:0;
-    padding:0.1em 1em;
-    background-color: white;
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
-    align-items: center;
-    &:active{
-        background-color: rgb(77, 255, 246);
-        color:black;
-    }
-    .start{
-        order:-1
-    }
-    .end{
-        order:1
-    }
-    &.circular{
-        border-radius: 50%;
-    aspect-ratio: 1/1;
+    padding:0;
+    font-size: 1em;
+}
 
-    }
-    &.rounded{
-        border-radius: 1em;
+@media screen and (min-width:800px){
+    main{
+        >.card-holder{
+            display: flex;
+            flex-wrap: wrap;
+            >.card{
+                margin:1em;
+            }
+        }
+
     }
 }
