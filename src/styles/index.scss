@@ -27,7 +27,7 @@ header{
 main{
     margin:1em;
     >.card-holder{
-        >.card{
+        .card{
             width:clamp(300px, 100%, 400px);
             box-shadow: 0 0 1em 0 rgba(0,0,0,0.5);
             border-radius: 1em;
@@ -47,12 +47,17 @@ button{
 @media screen and (min-width:800px){
     main{
         >.card-holder{
-            display: flex;
-            flex-wrap: wrap;
-            >.card{
-                margin:1em;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 1em;
+            .card{
+                margin:0;
             }
         }
 
     }
+}
+a{
+    text-decoration: none;
+    color:black;
 }
