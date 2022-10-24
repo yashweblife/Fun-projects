@@ -11,7 +11,6 @@ import "./styles/index.scss";
 // import { RayCastingDemo } from "./projects/RayCasting";
 // import { GeneticAlgoDemo } from "./projects/GeneticAlgo";
 
-import {BrownianMotionDemo} from './projects'
-
-const b = new BrownianMotionDemo(document.body)
+import {GeneticAlgoDemo} from './projects'
+const b = new GeneticAlgoDemo(document.body)
 b.app()
