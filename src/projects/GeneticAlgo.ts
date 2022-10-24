@@ -1,6 +1,34 @@
 import { Ball } from "../lib/Ball";
 import { Canvas } from "../lib/Canvas";
+import { PhysicsObject } from "../lib/PhysicsObject";
 import { Vector } from "../lib/Vector";
+
+class Portal{
+  public entry:Ball;
+  public exit:Ball;
+  constructor(start:Vector, end:Vector){
+    this.entry = new Ball(start)
+    this.exit = new Ball(end)
+    this.entry.size = 50;
+    this.exit.size = 25;
+    this.entry.color = 'black'
+    this.exit.color = 'blue'
+  }
+  public draw = (c:Canvas)=>{
+    c.line(this.entry.pos, this.exit.pos)
+    this.entry.draw(c)
+    this.exit.draw(c)
+  }
+  public teleport = (obj:Ball)=>{
+    if(obj.dist(this.entry)<this.entry.size+50){
+      if(obj.dist(this.entry)>this.entry.size){
+        obj.attract(this.entry,10)
+      }else{
+        obj.pos = this.exit.pos.clone();
+      }
+    }
+  }
+}
 
 class Agent extends Ball {
   public path: Vector[];
@@ -25,7 +53,7 @@ class Agent extends Ball {
         p1.push(this.mutate(partner.path[i]));
       }
     }
-    const child = new Agent(new Vector(c.width / 2, c.height / 2));
+    const child = new Agent(new Vector(10, c.height / 2));
     const color = Math.random() > 0.5 ? this.color : partner.color;
     const size = Math.random() > 0.5 ? this.size : partner.size;
     child.color = color;
@@ -57,7 +85,9 @@ class Wall {
     this.pos = pos;
     this.size = size;
   }
-  public draw = () => {};
+  public draw = () => {
+
+  };
 }
 export class GeneticAlgoDemo {
   public agents: Agent[] = [];
@@ -66,16 +96,20 @@ export class GeneticAlgoDemo {
   public clock: number = 0;
   public maxAge: number = 100;
   public populationSize: number = 100;
+  public portal:Portal;
+  public badPortal:Portal;
   constructor(parent: HTMLElement) {
     this.canvas = new Canvas();
     this.canvas.setSize(window.innerWidth, window.innerHeight);
+    this.portal = new Portal(new Vector(100,100), new Vector(this.canvas.width-100,this.canvas.height-100))
+    this.badPortal = new Portal(new Vector(300, 300), new Vector(10, this.canvas.height-10))
     parent.append(this.canvas.dom);
     this.target = new Ball(
       new Vector(this.canvas.width, this.canvas.height / 2)
     );
     for (var i = 0; i < this.populationSize; i++) {
       const a = new Agent(
-        new Vector(this.canvas.width / 2, this.canvas.height / 2)
+        new Vector(10, this.canvas.height / 2)
       );
       a.init();
       this.agents.push(a);
@@ -136,18 +170,25 @@ export class GeneticAlgoDemo {
       });
     } else {
       this.canvas.clear();
+      this.badPortal.draw(this.canvas);
+      this.portal.draw(this.canvas);
       this.target.draw(this.canvas);
-      // for(var i=0;i<this.agents.length;i++){
-      //     for(var j=0;j<this.agents.length;j++){
-      //         if(i!=j){
-      //             const dist = this.agents[i].dist(this.agents[j])
-      //             if(dist<this.agents[i].size + this.agents[j].size){
-      //                 this.agents[i].repel(this.agents[j])
-      //             }
-      //         }
-      //     }
-      // }
+      if(this.clock/step >= 3){
+        for(var i=0;i<this.agents.length;i++){
+            for(var j=0;j<this.agents.length;j++){
+                if(i!=j){
+                  if(this.agents[i].color != this.agents[j].color){
+                    const dist = this.agents[i].dist(this.agents[j])
+                    if(dist<this.agents[i].size + this.agents[j].size){
+                        this.agents[i].repel(this.agents[j])
+                    }
+                  }
+                }
+            }
+        }
+      }
       this.agents.forEach((agent: Agent) => {
+        this.portal.teleport(agent)
         agent.update();
         agent.bound(this.canvas, { x: false, y: false });
         agent.draw(this.canvas);
