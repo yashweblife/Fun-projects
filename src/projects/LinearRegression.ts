@@ -13,4 +13,4 @@ class Chart{
     constructor(){}
 }
 
-class LinearRegressionDemo{}
+export class LinearRegressionDemo{}
