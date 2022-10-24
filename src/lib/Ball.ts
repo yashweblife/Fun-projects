@@ -1,6 +1,6 @@
 import { Vector } from "./Vector";
 import { Canvas } from "./Canvas";
-import {Mouse} from "./Mouse";
+import { Mouse } from "./Mouse";
 /**
  * ## Ball
  * The Ball class represents a physics object with various properties.
@@ -17,7 +17,7 @@ export class Ball {
   mass: number;
   /**
    * Create a new ball object by passing a position.
-   * @param pos 
+   * @param pos
    */
   constructor(pos: Vector) {
     this.pos = pos;
@@ -35,40 +35,40 @@ export class Ball {
    * Attracts the ball to another ball
    * @param b Ball to get attracted to
    */
-  public attractGravo = (b: Ball|Mouse) => {
+  public attractGravo = (b: Ball | Mouse) => {
     var nVec = Vector.VecFromSub(this.pos, b.pos);
-    var dist = this.pos.dist(b.pos)
-    var f = 0.1
-    if(dist==0){
-      dist=this.size;
+    var dist = this.pos.dist(b.pos);
+    var f = 0.1;
+    if (dist == 0) {
+      dist = this.size;
     }
     nVec.normalize();
-    nVec.scalar(f*(this.mass)/(dist**2));
+    nVec.scalar((f * this.mass) / dist ** 2);
     this.addForce(nVec);
   };
-  public repelGravo = (b: Ball|Mouse) => {
+  public repelGravo = (b: Ball | Mouse) => {
     var nVec = Vector.VecFromAdd(this.pos, b.pos);
-    var dist = this.pos.dist(b.pos)
-    var f = 0.1
-    if(dist==0){
-      dist=this.size;
+    var dist = this.pos.dist(b.pos);
+    var f = 0.1;
+    if (dist == 0) {
+      dist = this.size;
     }
     nVec.normalize();
-    nVec.scalar(f*(this.mass)/(dist**2));
+    nVec.scalar((f * this.mass) / dist ** 2);
     this.addForce(nVec);
   };
-  public attract = (b:Ball|Mouse, f:number=0.9)=>{
+  public attract = (b: Ball | Mouse, f: number = 0.9) => {
     var nVec = Vector.VecFromSub(this.pos, b.pos);
-    nVec.normalize()
-    nVec.scalar(f)
+    nVec.normalize();
+    nVec.scalar(f);
     this.addForce(nVec);
-  }
-  public repel = (b:Ball|Mouse, f:number=0.9)=>{
+  };
+  public repel = (b: Ball | Mouse, f: number = 0.9) => {
     var nVec = Vector.VecFromSub(b.pos, this.pos);
-    nVec.normalize()
-    nVec.scalar(f)
+    nVec.normalize();
+    nVec.scalar(f);
     this.addForce(nVec);
-  }
+  };
   /**
    * Add a force to the list of forces acting on the ball
    * @param vec Vector
@@ -153,30 +153,36 @@ export class Ball {
       radius: this.size,
       fillColor: this.color,
     });
+    //this.drawVel(c);
+  };
+  public drawVel = (c: Canvas) => {
+    const vel: Vector = Vector.VecFromAdd(this.pos, this.vel);
+    vel.scalar(1.1)
+    c.line(this.pos, vel);
   };
   /**
    * ## Find distance between 2 ball
    * @param b Ball s
    * @returns number(distance)
    */
-  public dist = (b: Ball):number => {
+  public dist = (b: Ball): number => {
     return this.pos.dist(b.pos);
   };
   /**
    * Returns a ball with random position
-   * @param min 
-   * @param max 
-   * @returns 
+   * @param min
+   * @param max
+   * @returns
    */
-  public static random = (min: number, max: number):Ball => {
+  public static random = (min: number, max: number): Ball => {
     return new Ball(Vector.rand(min, max));
   };
   /**
    * Generates a list of random balls
-   * @param num 
-   * @param min 
-   * @param max 
-   * @returns 
+   * @param num
+   * @param min
+   * @param max
+   * @returns
    */
   public static generate = (num: number, min: number, max: number): Ball[] => {
     const balls: Ball[] = [];
