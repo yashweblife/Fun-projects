@@ -60,3 +60,5 @@ export class QuickSort{
     }
 
 }
+
+export class SortingDemo{}
