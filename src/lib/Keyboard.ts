@@ -1,10 +1,9 @@
-export class Keyboard{
-    lastKey:string;
+export class Keyboard {
+  lastKey: string;
 
-    constructor(){}
+  constructor() {}
 
-    public handleClick = (e:Event)=>{}
-    public handleDown = (e:Event)=>{}
-    public handleUp = (e:Event)=>{}
-
+  public handleClick = (e: Event) => {};
+  public handleDown = (e: Event) => {};
+  public handleUp = (e: Event) => {};
 }

@@ -1,5 +1,5 @@
-class Classifier{}
-class Group{}
-class Reducer{}
+class Classifier {}
+class Group {}
+class Reducer {}
 
-export class ImageClassifierDemo{}
+export class ImageClassifierDemo {}

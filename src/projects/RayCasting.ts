@@ -1,5 +1,5 @@
-class Ray{}
-class Ball{}
-class Bound{}
+class Ray {}
+class Ball {}
+class Bound {}
 
-export class RayCastingDemo{}
+export class RayCastingDemo {}
