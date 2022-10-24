@@ -9,24 +9,16 @@ import { Vector } from "../lib/Vector";
  * The effect can be simulated by applying random forces to the Ball object.
  * @functions app()
  */
-export class BrownianMotionDemo {
-  public balls: Ball[] = [];
-  public canvas: Canvas;
-  private time: number = 0;
-  /**
-   *
-   * @param parent A parent for the canvas object
-   */
-  constructor(parent: HTMLElement) {
-    this.canvas = new Canvas();
-    parent.append(this.canvas.dom);
-    for (var i = 0; i < 10; i++) {
-      this.balls.push(
-        new Ball(new Vector(this.canvas.width / 2, this.canvas.height / 2))
-      );
-    }
+
+class BallGroup{
+  private balls:Ball[] = []
+  private canvas:Canvas = new Canvas()
+  private time:number=0
+  constructor(parent:HTMLElement){
+    parent.append(this.canvas.dom)
+    this.balls = Ball.generate(100,0,500)
   }
-  public animate = () => {
+  public update = ()=>{
     this.canvas.clear();
     this.time += 1;
     this.balls.forEach((ball: Ball) => {
@@ -35,6 +27,19 @@ export class BrownianMotionDemo {
       ball.bound(this.canvas, { x: false, y: false });
       ball.draw(this.canvas);
     });
+  }
+}
+export class BrownianMotionDemo {
+  public balls:BallGroup;
+  /**
+   *
+   * @param parent A parent for the canvas object
+   */
+  constructor(parent: HTMLElement) {
+    this.balls = new BallGroup(parent)
+  }
+  public animate = () => {
+    this.balls.update()
     requestAnimationFrame(this.animate);
   };
   /**
