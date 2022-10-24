@@ -10,6 +10,3 @@ import { ImageClassifierDemo } from "./projects/ImageClassifier";
 import { LinearRegressionDemo } from "./projects/LinearRegression";
 import { RayCastingDemo } from "./projects/RayCasting";
 import { GeneticAlgoDemo } from "./projects/GeneticAlgo";
-
-const p = new GeneticAlgoDemo(document.body);
-p.app();
