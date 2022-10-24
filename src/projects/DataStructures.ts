@@ -121,3 +121,5 @@ export class BinaryTree{
 class GraphEdge{}
 class GraphNode{}
 class Graph{}
+
+export class DataStructureDemo{}
