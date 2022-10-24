@@ -11,19 +11,19 @@ This repo is a curation of fun programming concepts for people to use and learn 
 - [X] A Simple Keyboard Library
 - [X] A Simple Geometry Library
 - [ ] Simple Physics Library
-- [ ] Ball Dynamics
-- [ ] Genetic Algo
+- [X] Ball Dynamics
+- [X] Genetic Algo
 - [ ] Linear Regression
 - [ ] Image Classification from scratch
 - [ ] Seeking Behaviour
 - [ ] Flocking Behaviour
 - [ ] Vector Fields
-- [ ] Bubble Sort
-- [ ] Quick Sort
-- [ ] A Simple Text Compression
+- [X] Bubble Sort
+- [X] Quick Sort
+- [X] A Simple Text Compression
 - [ ] Pixel Art Maker
-- [ ] Brownean Motion
-- [ ] Binary Tree
-- [ ] Linked List
+- [X] Brownean Motion
+- [X] Binary Tree
+- [X] Linked List
 - [ ] A more complex turely random Random Number Generator
 - [ ] Ray Casting
