@@ -73,6 +73,8 @@ export class Canvas {
     fill = true,
     angle = 0,
   }: RectInterface) => {
+    this.ctx.save()
+    this.ctx.rotate(angle)
     this.ctx.beginPath();
     this.ctx.fillStyle = fillColor;
     this.ctx.strokeStyle = strokeColor;
@@ -80,6 +82,7 @@ export class Canvas {
     this.ctx.closePath();
     if (fill === true) this.ctx.fill();
     if (stroke === true) this.ctx.stroke();
+    this.ctx.restore();
   };
   public line = (v1: Vector, v2: Vector) => {
     this.ctx.beginPath();
