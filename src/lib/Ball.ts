@@ -29,49 +29,8 @@ export class Ball extends PhysicsObject {
     )},${Math.floor(Math.random() * 255)})`;
     this.forces = [];
   }
-  /**
-   * ## Attraction Behaviour
-   * Attracts the ball to another ball
-   * @param b Ball to get attracted to
-   */
-  public attractGravo = (b: Ball | Mouse) => {
-    var nVec = Vector.VecFromSub(this.pos, b.pos);
-    var dist = this.pos.dist(b.pos);
-    var f = 0.1;
-    if (dist == 0) {
-      dist = this.size;
-    }
-    nVec.normalize();
-    nVec.scalar((f * this.mass) / dist ** 2);
-    this.addForce(nVec);
-  };
-  /**
-   * ## Repulsion Behaviour
-   * Repels a physics object
-   */
-  public repelGravo = (b: Ball | Mouse) => {
-    var nVec = Vector.VecFromAdd(this.pos, b.pos);
-    var dist = this.pos.dist(b.pos);
-    var f = 0.1;
-    if (dist == 0) {
-      dist = this.size;
-    }
-    nVec.normalize();
-    nVec.scalar((f * this.mass) / dist ** 2);
-    this.addForce(nVec);
-  };
-  public attract = (b: Ball | Mouse, f: number = 0.9) => {
-    var nVec = Vector.VecFromSub(this.pos, b.pos);
-    nVec.normalize();
-    nVec.scalar(f);
-    this.addForce(nVec);
-  };
-  public repel = (b: Ball | Mouse, f: number = 0.9) => {
-    var nVec = Vector.VecFromSub(b.pos, this.pos);
-    nVec.normalize();
-    nVec.scalar(f);
-    this.addForce(nVec);
-  };
+
+
   /**
    * Add a force to the list of forces acting on the ball
    * @param vec Vector
@@ -168,9 +127,7 @@ export class Ball extends PhysicsObject {
    * @param b Ball s
    * @returns number(distance)
    */
-  public dist = (b: Ball): number => {
-    return this.pos.dist(b.pos);
-  };
+  
   /**
    * Returns a ball with random position
    * @param min
