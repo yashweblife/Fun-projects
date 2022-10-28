@@ -1,3 +1,4 @@
+import { Geometry } from "./Geometry";
 import { Vector } from "./Vector";
 interface CircleInterface {
   pos: Vector;
@@ -92,7 +93,17 @@ export class Canvas {
     this.ctx.stroke();
   };
   //public reverseRect = ({pos, size, fillColor, strokeColor, stroke, fill, angle})=>{}
-  public drawPath = () => {};
+  public drawPath = (vec:Vector[]) => {
+    this.ctx.beginPath()
+    for(var i=0;i<vec.length-1;i++){
+      const v1 = vec[i]
+      const v2 = vec[i+1]
+      this.ctx.moveTo(v1.x, v1.y)
+      this.ctx.lineTo(v2.x, v2.y)
+    }
+    this.ctx.closePath()
+    this.ctx.fill()
+  };
   public clear = () => {
     this.ctx.clearRect(0, 0, this.width, this.height);
   };
