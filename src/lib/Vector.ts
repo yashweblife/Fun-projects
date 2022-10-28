@@ -37,8 +37,13 @@ export class Vector {
    */
   private recalib = () => {
     this.mag = Math.sqrt(this.x ** 2 + this.y ** 2);
-    this.ux = this.x / this.mag;
-    this.uy = this.y / this.mag;
+    if(this.mag == 0){
+      this.ux = 0;
+      this.uy = 0;
+    }else{
+      this.ux = this.x / this.mag;
+      this.uy = this.y / this.mag;
+    }
     this.angle = Math.atan2(this.y, this.x);
   };
   /**
