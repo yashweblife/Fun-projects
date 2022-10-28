@@ -11,11 +11,16 @@ import "./styles/index.scss";
 // import { RayCastingDemo } from "./projects/RayCasting";
 // import { GeneticAlgoDemo } from "./projects/GeneticAlgo";
 
-import {Canvas} from './lib'
+import {Canvas, Vector} from './lib'
 import {Wall} from './lib'
-
-const c = new Canvas()
-const w = new Wall()
+import { Geometry } from "./lib";
+const c:Canvas = new Canvas()
 document.body.append(c.dom)
-w.angle = 10;
-w.draw(c)
+const vecArr = []
+
+vecArr.push(new Vector(10,10))
+vecArr.push(new Vector(100,10))
+vecArr.push(new Vector(100,100))
+vecArr.push(new Vector(10,100))
+const test = new Geometry(vecArr)
+test.draw(c)
