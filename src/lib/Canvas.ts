@@ -93,15 +93,15 @@ export class Canvas {
     this.ctx.stroke();
   };
   //public reverseRect = ({pos, size, fillColor, strokeColor, stroke, fill, angle})=>{}
-  public drawPath = (vec:Vector[]) => {
+  public fillPath = (vec:Vector[],color:string = "red") => {
     this.ctx.beginPath()
-    for(var i=0;i<vec.length-1;i++){
-      const v1 = vec[i]
-      const v2 = vec[i+1]
-      this.ctx.moveTo(v1.x, v1.y)
+    this.ctx.moveTo(vec[0].x, vec[0].y)
+    for(var i=1;i<vec.length;i++){
+      const v2 = vec[i]
       this.ctx.lineTo(v2.x, v2.y)
     }
     this.ctx.closePath()
+    this.ctx.fillStyle = color;
     this.ctx.fill()
   };
   public clear = () => {
