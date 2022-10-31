@@ -30,12 +30,12 @@ export class PhysicsObject {
   public attractGravo = (b: PhysicsObject) => {
     var nVec = Vector.VecFromSub(this.pos, b.pos);
     var dist = this.pos.dist(b.pos);
-    var f = 0.1;
-    if (dist == 0) {
+    var f = 0.0001;
+    if (dist < this.size) {
       dist = this.size;
     }
     nVec.normalize();
-    nVec.scalar((f * this.mass) / dist ** 2);
+    nVec.scalar((f * this.mass * b.mass) / dist);
     this.addForce(nVec);
   };
   /**
