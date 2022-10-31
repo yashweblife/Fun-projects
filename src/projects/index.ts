@@ -8,7 +8,7 @@ import { ImageClassifierDemo } from "./ImageClassifier";
 import { LinearRegressionDemo } from "./LinearRegression";
 import { PixelArtDemo } from "./PixelArt";
 import { RayCastingDemo } from "./RayCasting";
-import { RopeDemo } from "./Rope";
+import { RopeDemo, Rope } from "./Rope";
 import { SortingDemo } from "./Sorting";
 
 
@@ -24,5 +24,6 @@ export {
     PixelArtDemo,
     RayCastingDemo,
     RopeDemo,
-    SortingDemo
+    Rope,
+    SortingDemo,
 }
