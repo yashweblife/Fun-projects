@@ -17,13 +17,11 @@ class BallGroup {
         if (i != j) {
           const b1 = this.balls[i];
           const b2 = this.balls[j];
-          if (b1.dist(b2) < b1.size + b2.size) {
-            const nVec = new Vector(b1.pos.x - b2.pos.x, b1.pos.y - b2.pos.y);
-            const mVec = new Vector(b2.pos.x - b1.pos.x, b2.pos.y - b1.pos.y);
-            nVec.scalar(b2.mass);
-            mVec.scalar(b1.mass);
-            b1.acc = nVec;
-            b2.acc = mVec;
+          if (b1.dist(b2) <= b1.size + b2.size) {
+            b1.repel(b2, 2)
+            b1.vel.scalar(0.8)
+          }else{
+            b1.attract(b2, 0.001)
           }
         }
       }
