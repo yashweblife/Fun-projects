@@ -101,8 +101,8 @@ export class GeneticAlgoDemo {
   constructor(parent: HTMLElement) {
     this.canvas = new Canvas();
     this.canvas.setSize(window.innerWidth, window.innerHeight);
-    this.portal = new Portal(new Vector(100,100), new Vector(this.canvas.width-100,this.canvas.height-100))
-    this.badPortal = new Portal(new Vector(300, 300), new Vector(10, this.canvas.height-10))
+    this.portal = new Portal(new Vector(100,100), new Vector(this.canvas.width/2,this.canvas.height/2))
+    this.badPortal = new Portal(new Vector(this.canvas.width/2,100), new Vector(10, this.canvas.height-10))
     parent.append(this.canvas.dom);
     this.target = new Ball(
       new Vector(this.canvas.width, this.canvas.height / 2)
@@ -170,7 +170,7 @@ export class GeneticAlgoDemo {
       });
     } else {
       this.canvas.clear();
-      this.badPortal.draw(this.canvas);
+        this.badPortal.draw(this.canvas);
       this.portal.draw(this.canvas);
       this.target.draw(this.canvas);
       if(this.clock/step >= 3){
@@ -189,6 +189,7 @@ export class GeneticAlgoDemo {
       }
       this.agents.forEach((agent: Agent) => {
         this.portal.teleport(agent)
+        this.badPortal.teleport(agent)
         agent.update();
         agent.bound(this.canvas, { x: false, y: false });
         agent.draw(this.canvas);
