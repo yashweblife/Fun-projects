@@ -22,7 +22,7 @@ class BallGroup{
     this.canvas.clear();
     this.time += 1;
     this.balls.forEach((ball: Ball) => {
-      ball.addForce(Vector.randSIgned(-5, 5));
+      ball.addForce(Vector.randSIgned(-2, 2));
       ball.update();
       ball.bound(this.canvas, { x: false, y: false });
       ball.draw(this.canvas);
