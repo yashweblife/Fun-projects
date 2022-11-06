@@ -1,6 +1,5 @@
-import { Canvas } from "../lib/Canvas";
 import { Ball } from "../lib/Ball";
-import { Vector } from "../lib/Vector";
+import { Canvas } from "../lib/Canvas";
 
 /**
  * ## Ball Group
@@ -18,10 +17,10 @@ class BallGroup {
           const b1 = this.balls[i];
           const b2 = this.balls[j];
           if (b1.dist(b2) <= b1.size + b2.size) {
-            b1.repel(b2, 2)
-            b1.vel.scalar(0.8)
-          }else{
-            b1.attract(b2, 0.001)
+            b1.repel(b2, 2);
+            b1.vel.scalar(0.8);
+          } else {
+            b1.attract(b2, 0.001);
           }
         }
       }
