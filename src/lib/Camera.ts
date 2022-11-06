@@ -9,18 +9,18 @@ export class Camera {
     this.stream = stream;
     this.video.srcObject = this.stream;
     this.video.play();
-  };
+  }
   public play = () => {
     this.video.play();
-  };
+  }
   public pause = () => {
     this.video.pause();
-  };
+  }
   public close = () => {
     this.stream?.getTracks().forEach((track: MediaStreamTrack) => {
       this.stream?.removeTrack(track);
     });
-  };
-  public capture = () => {};
-  public reverse = () => {};
+  }
+  public capture = () => {}
+  public reverse = () => {}
 }
