@@ -3,8 +3,12 @@ interface UniqueInterface {
   occurance: number[];
 }
 
-class TextCompression {}
-class ImageCompression {}
+class TextCompression {
+  
+}
+class ImageCompression{
+  
+}
 /**
  * ## Compression
  * Compression here refers to a method of reducing the amount of data.
