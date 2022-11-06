@@ -7,6 +7,7 @@ import { Geometry } from "./Geometry";
 import { Graph } from "./Graph";
 import { Canvas } from "./Canvas";
 import {Wall} from './Wall'
+import {Camera} from './Camera'
 export {
   Wall,
   Vector,
