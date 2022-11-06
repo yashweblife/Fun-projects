@@ -1,6 +1,6 @@
-import { Ball } from "../lib/Ball";
-import { Canvas } from "../lib/Canvas";
-import { Vector } from "../lib/Vector";
+import { Ball } from "../lib/Ball"
+import { Canvas } from "../lib/Canvas"
+import { Vector } from "../lib/Vector"
 /**
  * ## Brownian Motion
  * This is a phenonemon that can be observerd on the microscopic scale.
@@ -19,18 +19,18 @@ class BallGroup{
     this.balls = Ball.generate(100,0,500)
   }
   public update = ()=>{
-    this.canvas.clear();
-    this.time += 1;
+    this.canvas.clear()
+    this.time += 1
     this.balls.forEach((ball: Ball) => {
-      ball.addForce(Vector.randSIgned(-2, 2));
-      ball.update();
-      ball.bound(this.canvas, { x: false, y: false });
-      ball.draw(this.canvas);
+      ball.addForce(Vector.randSIgned(-2, 2))
+      ball.update()
+      ball.bound(this.canvas, { x: false, y: false })
+      ball.draw(this.canvas)
     });
   }
 }
 export class BrownianMotionDemo {
-  public balls:BallGroup;
+  public balls:BallGroup
   /**
    *
    * @param parent A parent for the canvas object
@@ -40,12 +40,12 @@ export class BrownianMotionDemo {
   }
   public animate = () => {
     this.balls.update()
-    requestAnimationFrame(this.animate);
+    requestAnimationFrame(this.animate)
   };
   /**
    * Call the app function to get the animation running
    */
   public app = () => {
-    this.animate();
+    this.animate()
   };
 }
