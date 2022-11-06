@@ -13,17 +13,17 @@ This repo is a curation of fun programming concepts for people to use and learn 
 - [ ] Simple Physics Library
 - [X] Ball Dynamics
 - [X] Genetic Algo
-- [ ] Linear Regression
-- [ ] Image Classification from scratch
-- [ ] Seeking Behaviour
-- [ ] Flocking Behaviour
-- [ ] Vector Fields
+- [X] Linear Regression
+- [X] Image Classification from scratch
+- [X] Seeking Behaviour
+- [X] Flocking Behaviour
+- [X] Vector Fields
 - [X] Bubble Sort
 - [X] Quick Sort
 - [X] A Simple Text Compression
-- [ ] Pixel Art Maker
+- [X] Pixel Art Maker
 - [X] Brownean Motion
 - [X] Binary Tree
 - [X] Linked List
 - [ ] A more complex turely random Random Number Generator
-- [ ] Ray Casting
+- [X] Ray Casting
