@@ -1,6 +1,5 @@
 import { Ball } from "../lib/Ball";
 import { Canvas } from "../lib/Canvas";
-import { PhysicsObject } from "../lib/PhysicsObject";
 import { Vector } from "../lib/Vector";
 
 class Portal{
