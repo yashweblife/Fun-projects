@@ -168,6 +168,9 @@ export class Vector {
     this.x = this.x * cos - this.y * sin;
     this.y = this.x * sin + this.y * cos;
   };
+  public getNegative = ()=>{
+    return(new Vector(-this.x, -this.y))
+  }
   /**
    * Clones the Vector
    * @returns cloned Vector
