@@ -85,8 +85,9 @@ export class Canvas {
     if (stroke === true) this.ctx.stroke();
     this.ctx.restore();
   };
-  public line = (v1: Vector, v2: Vector) => {
+  public line = (v1: Vector, v2: Vector, color:string = 'rgba(0,0,0,0.5)') => {
     this.ctx.beginPath();
+    this.ctx.strokeStyle = color;
     this.ctx.moveTo(v1.x, v1.y);
     this.ctx.lineTo(v2.x, v2.y);
     this.ctx.closePath();
