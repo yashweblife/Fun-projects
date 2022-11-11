@@ -7,10 +7,12 @@ import { GravityDemo } from "./Gravity";
 import { ImageClassifierDemo } from "./ImageClassifier";
 import { LinearRegressionDemo } from "./LinearRegression";
 import { PixelArtDemo } from "./PixelArt";
+import { PowerRNGDemo } from "./PowerRNG";
 import { RayCastingDemo } from "./RayCasting";
 import { RopeDemo, Rope } from "./Rope";
 import { SortingDemo } from "./Sorting";
-
+import {VectorFieldDemo} from './VectorField'
+import {FlockingBehaviourDemo} from './FlockingBehaviour'
 
 export {
     BrownianMotionDemo,
@@ -26,4 +28,7 @@ export {
     RopeDemo,
     Rope,
     SortingDemo,
+    PowerRNGDemo,
+    VectorFieldDemo,
+    FlockingBehaviourDemo
 }
