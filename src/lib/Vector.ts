@@ -179,3 +179,23 @@ export class Vector {
     return new Vector(this.x, this.y);
   };
 }
+
+
+export class Line{
+  public p1:Vector
+  public p2:Vector
+  public t:number
+  public parametric:Vector
+  public direction:Vector
+  constructor(a:Vector,b:Vector){
+    let r0 = a
+    let v = Vector.VecFromSub(b,a)
+    this.direction = v
+    let r = Vector.VecFromAdd(r0,v)
+    this.parametric.x = r0.x + (v.x*this.t) 
+    this.parametric.y = r0.y + (v.y*this.t) 
+  }
+  public onLine = (a:Vector)=>{
+    
+  }
+}
