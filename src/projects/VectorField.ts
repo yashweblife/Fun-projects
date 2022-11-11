@@ -1,1 +1,5 @@
-export class VectorFieldDemo{}
+export class VectorFieldDemo{
+    constructor(){}
+    private animate = ()=>{}
+    public app = ()=>{}
+}
