@@ -180,7 +180,6 @@ export class Vector {
   };
 }
 
-
 export class Line{
   public p1:Vector
   public p2:Vector
@@ -199,3 +198,4 @@ export class Line{
     
   }
 }
+export class Plane{}
