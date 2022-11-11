@@ -1,4 +1,4 @@
 class Boid{}
-class FlockingDemo{
+export class FlockingBehaviourDemo{
     constructor(){}
 }
