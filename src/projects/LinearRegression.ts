@@ -11,4 +11,8 @@ class Chart {
   constructor() {}
 }
 
-export class LinearRegressionDemo {}
+export class LinearRegressionDemo {
+  constructor() {}
+  private animate = () => {};
+  public app = () => {};
+}
