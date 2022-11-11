@@ -11,4 +11,8 @@ class Pixel {
   constructor() {}
 }
 
-export class PixelArtDemo{}
+export class PixelArtDemo{
+  constructor(){}
+  private animate = ()=>{}
+  public app = ()=>{}
+}
