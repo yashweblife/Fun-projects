@@ -11,4 +11,3 @@ import { LinearRegressionDemo } from "./projects/LinearRegression";
 import { RayCastingDemo } from "./projects/RayCasting";
 import { GeneticAlgoDemo } from "./projects/GeneticAlgo";
 import { Graph, Vector } from "./lib";
-
