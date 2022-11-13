@@ -9,7 +9,7 @@ import { Canvas } from "./Canvas";
 import {Wall} from './Wall'
 import {Camera} from './Camera'
 import {Matrix} from './Matrix'
-import {bench} from './JSTest'
+import {bench, benchAverage} from './JSTest'
 export {
   Wall,
   Vector,
@@ -21,5 +21,6 @@ export {
   Graph,
   Canvas,
   Matrix,
-  bench
+  bench,
+  benchAverage
 };
