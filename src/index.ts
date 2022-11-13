@@ -1,15 +1,13 @@
 import "./styles/index.scss";
-import { RopeDemo } from "./projects/Rope";
-import { CollisionDetectionDemo } from "./projects/CollisionDetection";
-import { BrownianMotionDemo } from "./projects/BrownianMotion";
-import { CompressorDemo } from "./projects/Compression";
-import { GravityDemo } from "./projects/Gravity";
-import { SortingDemo } from "./projects/Sorting";
-import { DataStructureDemo } from "./projects/DataStructures";
-import { ImageClassifierDemo } from "./projects/ImageClassifier";
-import { LinearRegressionDemo } from "./projects/LinearRegression";
-import { RayCastingDemo } from "./projects/RayCasting";
-import { GeneticAlgoDemo } from "./projects/GeneticAlgo";
-import { Graph, Vector } from "./lib";
-import { Matrix, bench, benchAverage, testIf } from "./lib";
-
+import { RopeDemo } from "./projects";
+import { CollisionDetectionDemo } from "./projects";
+import { BrownianMotionDemo } from "./projects";
+import { CompressorDemo } from "./projects";
+import { GravityDemo } from "./projects";
+import { SortingDemo } from "./projects";
+import { DataStructureDemo } from "./projects";
+import { ImageClassifierDemo } from "./projects";
+import { LinearRegressionDemo } from "./projects";
+import { RayCastingDemo } from "./projects";
+import { GeneticAlgoDemo } from "./projects";
+import { Graph, Vector, Matrix, bench, benchAverage, testIf } from "./lib";
