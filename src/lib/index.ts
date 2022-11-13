@@ -8,6 +8,7 @@ import { Graph } from "./Graph";
 import { Canvas } from "./Canvas";
 import {Wall} from './Wall'
 import {Camera} from './Camera'
+import {Matrix} from './Matrix'
 export {
   Wall,
   Vector,
@@ -18,4 +19,5 @@ export {
   Geometry,
   Graph,
   Canvas,
+  Matrix
 };
