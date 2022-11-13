@@ -16,3 +16,14 @@ export function benchAverage(f:()=>any, rotations:number=1000){
     time/=rotations
     return time
 }
+
+export function test(f:()=>any){
+    var check = ()=>{
+        return(f())
+    }
+    var shouldBe = (data:any)=>{
+        if(check() == data) return(true)
+        return(false)    
+    }
+    return({shouldBe})
+}
