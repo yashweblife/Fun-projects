@@ -11,21 +11,5 @@ import { LinearRegressionDemo } from "./projects/LinearRegression";
 import { RayCastingDemo } from "./projects/RayCasting";
 import { GeneticAlgoDemo } from "./projects/GeneticAlgo";
 import { Graph, Vector } from "./lib";
-import { Matrix, bench, benchAverage } from "./lib";
+import { Matrix, bench, benchAverage, testIf } from "./lib";
 
-var x = new Matrix();
-var data = [
-    [0, 0, 1],
-    [0, 1, 0],
-    [1, 0, 0],
-];
-x.init(data)
-var y = new Matrix();
-var data = [
-    [0, 0, 1],
-    [0, 1, 0],
-    [1, 0, 0],
-];
-y.init(data)
-console.log(benchAverage(()=>x.add(y), 10000))
-console.log(benchAverage(()=>x.addTest(y), 10000))
