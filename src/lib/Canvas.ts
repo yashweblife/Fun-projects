@@ -116,4 +116,8 @@ export class Canvas {
   public drawImage = (img:HTMLVideoElement)=>{
     this.ctx.drawImage(img, 0, 0, this.width, this.height)
   }
+  public getImageData = ():Uint8ClampedArray=>{
+    let img:ImageData = this.ctx.getImageData(0,0,this.width, this.height)
+    return(img.data)
+  }
 }
