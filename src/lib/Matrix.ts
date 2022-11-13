@@ -20,7 +20,7 @@ export class Matrix{
             }
             output.push(test)
         }
-        console.log(output)
+        //console.log(output)
         console.timeEnd('test 0')
     }
     public add = (mat:Matrix)=>{
@@ -37,7 +37,7 @@ export class Matrix{
             }
             output.push(test)
         }
-        console.log(output)
+        //console.log(output)
         console.timeEnd('test 1')
     }
     public scalar = ()=>{}
