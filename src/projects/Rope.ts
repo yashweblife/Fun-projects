@@ -63,7 +63,7 @@ export class Cloth{
 export class RopeDemo {
   public canvas: Canvas = new Canvas();
   public rope: Rope = new Rope(this.canvas);
-  constructor(parent: HTMLElement) {
+  constructor(parent: HTMLElement = document.body) {
     this.canvas.setSize(500, 500);
     parent.append(this.canvas.dom);
   }
