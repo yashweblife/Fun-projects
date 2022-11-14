@@ -35,7 +35,7 @@ export class BrownianMotionDemo {
    *
    * @param parent A parent for the canvas object
    */
-  constructor(parent: HTMLElement) {
+  constructor(parent: HTMLElement = document.body) {
     this.balls = new BallGroup(parent)
   }
   public animate = () => {
