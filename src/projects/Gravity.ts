@@ -57,7 +57,7 @@ class FreeFall {
   private canvas: Canvas;
   private balls: Ball[];
   private gravity: Vector;
-  constructor(parent: HTMLElement) {
+  constructor(parent: HTMLElement = document.body) {
     this.canvas = new Canvas();
     parent.append(this.canvas.dom);
     this.gravity = new Vector(0, 0.1);
