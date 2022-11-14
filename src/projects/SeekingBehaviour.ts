@@ -9,7 +9,7 @@ export class SeekingBehaviourDemo{
     private food:Ball[]
     private agents:Ball[]
     private canvas:Canvas;
-    constructor(parent:HTMLElement){
+    constructor(parent:HTMLElement = document.body){
         this.canvas = new Canvas()
         parent.append(this.canvas.dom)
         this.food = Ball.generate(10,0,this.canvas.width)
