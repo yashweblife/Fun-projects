@@ -1,5 +1,5 @@
 export class VectorFieldDemo{
-    constructor(){}
+    constructor(parent:HTMLElement = document.body){}
     private animate = ()=>{}
     public app = ()=>{}
 }
