@@ -3,7 +3,7 @@ class Ball {}
 class Bound {}
 
 export class RayCastingDemo {
-  constructor() {}
+  constructor(parent:HTMLElement = document.body) {}
   private animate = () => {};
   public app = () => {};
 }
