@@ -95,7 +95,7 @@ export class GeneticAlgoDemo {
   public populationSize: number = 100
   public portal: Portal
   public badPortal: Portal
-  constructor(parent: HTMLElement) {
+  constructor(parent: HTMLElement = document.body) {
     this.canvas = new Canvas()
     this.canvas.setSize(window.innerWidth, window.innerHeight)
     this.portal = new Portal(
