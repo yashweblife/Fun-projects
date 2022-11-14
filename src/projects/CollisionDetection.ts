@@ -53,7 +53,7 @@ class BallGroup {
 export class CollisionDetectionDemo {
   private canvas: Canvas
   private balls: BallGroup
-  constructor(parent: HTMLElement) {
+  constructor(parent: HTMLElement = document.body) {
     this.canvas = new Canvas()
     parent.append(this.canvas.dom)
     this.balls = new BallGroup(this.canvas, 100)
