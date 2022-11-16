@@ -117,7 +117,7 @@ export class Canvas {
     this.ctx.drawImage(img, 0, 0, this.width, this.height)
   }
   public getImageData = ():ImageData=>{
-    let img:ImageData = this.ctx.getImageData(0,0,this.width, this.height)
+    let img:ImageData = this.ctx.getImageData(0,0,this.width, this.height,{willReadFrequently:true} as ImageDataSettings)
     return(img)
   }
 }
