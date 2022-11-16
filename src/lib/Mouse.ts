@@ -8,6 +8,7 @@ export class Mouse extends PhysicsObject {
   constructor() {
     super();
     this.pos = new Vector();
+    this.offset = new Vector();
   }
   public handleMove = (e: MouseEvent) => {
     this.pos.x = e.x;
@@ -23,7 +24,11 @@ export class Mouse extends PhysicsObject {
     this.click = false;
   };
   public move = (e: MouseEvent) => {
-    this.pos.x = e.x;
-    this.pos.y = e.y;
+    this.pos.x = e.clientX - this.offset.x
+    this.pos.y = e.clientY - this.offset.y
   };
+  public setOffset = (val:DOMRect)=>{
+    this.offset.x = val.left;
+    this.offset.y = val.top;
+  }
 }
