@@ -13,7 +13,7 @@ import { RopeDemo, Rope } from "./Rope";
 import { SortingDemo } from "./Sorting";
 import {VectorFieldDemo} from './VectorField'
 import {FlockingBehaviourDemo} from './FlockingBehaviour'
-
+import {FourierDemo} from "./Fourier"
 export {
     BrownianMotionDemo,
     CollisionDetectionDemo,
@@ -30,5 +30,6 @@ export {
     SortingDemo,
     PowerRNGDemo,
     VectorFieldDemo,
-    FlockingBehaviourDemo
+    FlockingBehaviourDemo,
+    FourierDemo
 }
