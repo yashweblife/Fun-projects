@@ -10,7 +10,5 @@ import { ImageClassifierDemo } from "./projects";
 import { LinearRegressionDemo } from "./projects";
 import { RayCastingDemo } from "./projects";
 import { GeneticAlgoDemo } from "./projects";
-import { Graph, Vector, Matrix, bench, benchAverage, testIf } from "./lib";
+import { Vector, Matrix, bench, benchAverage, testIf, Canvas } from "./lib";
 
-var app = new ImageClassifierDemo()
-app.allowDraw()
