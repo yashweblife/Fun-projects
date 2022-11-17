@@ -11,4 +11,8 @@ import { LinearRegressionDemo } from "./projects";
 import { RayCastingDemo } from "./projects";
 import { GeneticAlgoDemo } from "./projects";
 import { Vector, Matrix, bench, benchAverage, testIf, Canvas } from "./lib";
+import {FourierDemo} from "./projects"
 
+var app = new FourierDemo()
+app.plotSquare()
+app.app();
