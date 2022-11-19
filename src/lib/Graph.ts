@@ -7,6 +7,7 @@ export class Graph {
   private scale: number = 1;
   constructor(parent: HTMLElement = document.body) {
     this.canvas = new Canvas();
+    this.canvas.setSize(500,500)
     parent.append(this.canvas.dom);
   }
   private recalib = ()=>{
@@ -68,6 +69,20 @@ export class Graph {
         fillColor: "red",
       });
     });
+    for(var i=0;i<this.data.length-1;i++){
+      var val = this.data[i]
+      var val1 = this.data[i+1]
+      this.canvas.line(
+        new Vector(
+          this.origin.x + val.x * this.scale,
+          this.origin.y + val.y * this.scale
+        ),
+        new Vector(
+          this.origin.x + val1.x * this.scale,
+          this.origin.y + val1.y * this.scale
+        ),
+      )
+    }
   };
   public animate = () => {
     this.canvas.clear();
