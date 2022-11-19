@@ -1,5 +1,15 @@
 import { Canvas } from "./Canvas";
 import { Vector } from "./Vector";
+/**
+ * ### Graph
+ * This is the graph library
+ * Name | Info
+ * -------|-------
+ * setOrigin | Sets the origin of the canvas
+ * plot | vals:()=>number[] plots a number array on linear x axis
+ * plotVector | func:()=>Vector[] plots vectors
+ * 
+ */
 export class Graph {
   private canvas: Canvas = new Canvas();
   private data: any[] = [];
