@@ -1,42 +1,32 @@
 import { Canvas } from "./Canvas";
 import { Vector } from "./Vector";
 export class Graph {
-  public canvas: Canvas;
-  public data: any[] = [];
-  public origin: Vector = new Vector(0, 0);
-  public scale: number = 10;
-  constructor(parent: HTMLElement) {
+  private canvas: Canvas = new Canvas()
+  private data: any[] = [];
+  private origin: Vector = new Vector(this.canvas.width/2, this.canvas.height/2);
+  private scale: number = 1;
+  constructor(parent: HTMLElement = document.body) {
     this.canvas = new Canvas();
-    this.setOrigin("center");
     parent.append(this.canvas.dom);
   }
-  public setOrigin(val: Vector | string) {
-    if (val == "center") {
-      this.origin = new Vector(this.canvas.width / 2, this.canvas.height / 2);
-    } else if (typeof val != "string") {
-      this.origin = val;
-    }
-    if (this.data.length > 0) {
-      this.data.forEach((v: Vector) => {
-        v.add(this.origin);
-      });
-    }
+  private recalib = ()=>{
+
   }
-  public setScale(val: number) {
-    if (val <= 2) return;
-    this.scale = val;
-    if (this.data.length > 0) {
-      this.data.forEach((v: Vector) => {
-        v.scalar(this.scale);
-      });
-    }
+  public setScale = (num:number)=>{
+    this.scale = num
   }
-  public addData = (data: Vector) => {
-    var f = data.getNegative();
-    var op = Vector.VecFromAdd(this.origin, data);
-    op.scalar(this.scale);
-    this.data.push(op);
-  };
+  public setOrigin = (val:Vector)=>{
+    this.origin = val
+  }
+  public setOriginToCenter = ()=>{
+    this.origin = new Vector(this.canvas.width/2, this.canvas.height/2)
+  }
+  public plot = (vals:()=>number[])=>{
+    this.data = vals().map((v:number, index:number)=>new Vector(index, -v))
+  }
+  public plotVector = (func:()=>Vector[])=>{
+    this.data = func()
+  }
   private drawGrid = () => {
     this.canvas.line(this.origin, new Vector(this.canvas.width, this.origin.y));
     this.canvas.line(
@@ -53,26 +43,26 @@ export class Graph {
     );
     for (var i = 0; i < this.canvas.width / this.scale; i++) {
       this.canvas.line(
-        new Vector(i * this.scale, 0),
-        new Vector(i * this.scale, this.canvas.height),
+        new Vector(i * this.scale * 10, 0),
+        new Vector(i * this.scale * 10, this.canvas.height),
         "rgba(0,0,0,0.1)"
       );
       this.canvas.line(
-        new Vector(0, i * this.scale),
-        new Vector(this.canvas.width, i * this.scale),
+        new Vector(0, i * this.scale * 10),
+        new Vector(this.canvas.width, i * this.scale * 10),
         "rgba(0,0,0,0.1)"
       );
     }
-
-    for (var i = 0; i < this.data.length - 1; i++) {
-      this.canvas.line(this.data[i], this.data[i + 1]);
-    }
   };
-  public draw = () => {
-    this.drawGrid()
-    this.data.forEach((d: Vector) => {
+  private draw = () => {
+    this.canvas.clear();
+    this.drawGrid();
+    this.data.forEach((val: Vector) => {
       this.canvas.circle({
-        pos: d,
+        pos: new Vector(
+          this.origin.x + val.x * this.scale,
+          this.origin.y + val.y * this.scale
+        ),
         radius: 1,
         fill: true,
         fillColor: "red",
@@ -81,6 +71,7 @@ export class Graph {
   };
   public animate = () => {
     this.canvas.clear();
+    this.drawGrid()
     this.draw();
     requestAnimationFrame(this.animate);
   };
