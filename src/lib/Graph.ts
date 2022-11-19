@@ -1,33 +1,34 @@
 import { Canvas } from "./Canvas";
 import { Vector } from "./Vector";
 export class Graph {
-  private canvas: Canvas = new Canvas()
+  private canvas: Canvas = new Canvas();
   private data: any[] = [];
-  private origin: Vector = new Vector(this.canvas.width/2, this.canvas.height/2);
+  private origin: Vector = new Vector(
+    this.canvas.width / 2,
+    this.canvas.height / 2
+  );
   private scale: number = 1;
   constructor(parent: HTMLElement = document.body) {
     this.canvas = new Canvas();
-    this.canvas.setSize(500,500)
+    this.canvas.setSize(500, 500);
     parent.append(this.canvas.dom);
   }
-  private recalib = ()=>{
-
-  }
-  public setScale = (num:number)=>{
-    this.scale = num
-  }
-  public setOrigin = (val:Vector)=>{
-    this.origin = val
-  }
-  public setOriginToCenter = ()=>{
-    this.origin = new Vector(this.canvas.width/2, this.canvas.height/2)
-  }
-  public plot = (vals:()=>number[])=>{
-    this.data = vals().map((v:number, index:number)=>new Vector(index, -v))
-  }
-  public plotVector = (func:()=>Vector[])=>{
-    this.data = func()
-  }
+  private recalib = () => {};
+  public setScale = (num: number) => {
+    this.scale = num;
+  };
+  public setOrigin = (val: Vector) => {
+    this.origin = val;
+  };
+  public setOriginToCenter = () => {
+    this.origin = new Vector(this.canvas.width / 2, this.canvas.height / 2);
+  };
+  public plot = (vals: () => number[]) => {
+    this.data = vals().map((v: number, index: number) => new Vector(index, -v));
+  };
+  public plotVector = (func: () => Vector[]) => {
+    this.data = func();
+  };
   private drawGrid = () => {
     this.canvas.line(this.origin, new Vector(this.canvas.width, this.origin.y));
     this.canvas.line(
@@ -69,9 +70,9 @@ export class Graph {
         fillColor: "red",
       });
     });
-    for(var i=0;i<this.data.length-1;i++){
-      var val = this.data[i]
-      var val1 = this.data[i+1]
+    for (var i = 0; i < this.data.length - 1; i++) {
+      var val = this.data[i];
+      var val1 = this.data[i + 1];
       this.canvas.line(
         new Vector(
           this.origin.x + val.x * this.scale,
@@ -80,13 +81,13 @@ export class Graph {
         new Vector(
           this.origin.x + val1.x * this.scale,
           this.origin.y + val1.y * this.scale
-        ),
-      )
+        )
+      );
     }
   };
   public animate = () => {
     this.canvas.clear();
-    this.drawGrid()
+    this.drawGrid();
     this.draw();
     requestAnimationFrame(this.animate);
   };
