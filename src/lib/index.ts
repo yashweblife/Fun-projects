@@ -10,6 +10,7 @@ import {Wall} from './Wall'
 import {Camera} from './Camera'
 import {Matrix} from './Matrix'
 import {bench, benchAverage, testIf} from './JSTest'
+import {Grid} from "./Grid"
 export {
   Wall,
   Vector,
@@ -23,5 +24,6 @@ export {
   Matrix,
   bench,
   benchAverage,
-  testIf
+  testIf,
+  Grid
 };
