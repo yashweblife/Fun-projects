@@ -16,8 +16,8 @@ import { FourierDemo } from "./projects";
 var test = new Graph()
 test.plot(()=>{
   var output = []
-  for(var i=0;i<100;i++){
-    output.push(i)
+  for(var i=-Math.PI;i<Math.PI;i+=0.01){
+    output.push(10*Math.sin(100*i))
   }
   return(output)
 })
