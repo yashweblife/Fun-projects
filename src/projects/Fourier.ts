@@ -31,9 +31,9 @@ export class FourierDemo {
     this.freq = a;
     this.recalib();
   };
-  public setScale = (val:number)=>{
-    this.scale = val
-  }
+  public setScale = (val: number) => {
+    this.scale = val;
+  };
   public plot = (func: () => number[]) => {
     if (this.data.length == 0) {
       this.data = func().map(
@@ -47,9 +47,9 @@ export class FourierDemo {
       );
     }
   };
-  public plotVector = (func:()=>Vector[])=>{
-    this.data = func()
-  }
+  public plotVector = (func: () => Vector[]) => {
+    this.data = func();
+  };
   public plotSquare = () => {
     for (var i = -Math.PI; i < Math.PI; i += 1 / this.canvas.width) {
       var sum = 0;
@@ -62,6 +62,99 @@ export class FourierDemo {
         new Vector(i * this.waveLength, this.canvas.height / 2 + sum)
       );
     }
+  };
+  public plotCircle = () => {
+    const output: Vector[] = [];
+    for (var i = -Math.PI; i < Math.PI; i += 0.01) {
+      output.push(
+        new Vector(
+          FourierDemo.makeCos(100, 1, i),
+          FourierDemo.makeSin(100, 1, i)
+        )
+      );
+    }
+    this.data = output;
+  };
+  public plotButterFly = () => {
+    const output: Vector[] = [];
+    for (var i = -Math.PI; i < Math.PI; i += 0.01) {
+      output.push(
+        new Vector(
+          170 +
+            FourierDemo.makeCos(100, 1, i) *
+              (0.5 - FourierDemo.makeCos(1, 1, i)),
+          FourierDemo.makeSin(100, 1, i) * (1 - FourierDemo.makeCos(1, 1, i))
+        )
+      );
+      output.push(
+        new Vector(
+          -170 +
+            FourierDemo.makeCos(-100, 1, i) *
+              (0.5 - FourierDemo.makeCos(1, 1, i)),
+          FourierDemo.makeSin(100, 1, i) * (1 - FourierDemo.makeCos(1, 1, i))
+        )
+      );
+      output.push(
+        new Vector(
+          160 +
+            FourierDemo.makeCos(90, 1, i) *
+              (0.5 - FourierDemo.makeCos(1, 1, i)),
+          FourierDemo.makeSin(90, 1, i) * (1 - FourierDemo.makeCos(1, 1, i))
+        )
+      );
+      output.push(
+        new Vector(
+          -160 +
+            FourierDemo.makeCos(-90, 1, i) *
+              (0.5 - FourierDemo.makeCos(1, 1, i)),
+          FourierDemo.makeSin(90, 1, i) * (1 - FourierDemo.makeCos(1, 1, i))
+        )
+      );
+      output.push(
+        new Vector(
+          -100 + FourierDemo.makeCos(10, 1, i),
+          -100 + FourierDemo.makeSin(10, 1, i)
+        )
+      );
+      output.push(
+        new Vector(
+          100 + FourierDemo.makeCos(10, 1, i),
+          -100 + FourierDemo.makeSin(10, 1, i)
+        )
+      );
+      output.push(
+        new Vector(
+          90 + FourierDemo.makeCos(30, 1, i),
+          70 + FourierDemo.makeSin(30, 1, i)
+        )
+      );
+      output.push(
+        new Vector(
+          -90 + FourierDemo.makeCos(30, 1, i),
+          70 + FourierDemo.makeSin(30, 1, i)
+        )
+      );
+
+      output.push(
+        new Vector(
+          FourierDemo.makeCos(20, 1, i),
+          FourierDemo.makeSin(100, 1, i)
+        )
+      );
+    }
+    this.data = output;
+  };
+  public plotCardoid = () => {
+    const output: Vector[] = [];
+    for (var i = -Math.PI; i < Math.PI; i += 0.01) {
+      output.push(
+        new Vector(
+          FourierDemo.makeCos(100, 1, i) * (1 - FourierDemo.makeCos(1, 1, i)),
+          FourierDemo.makeSin(100, 1, i) * (1 - FourierDemo.makeCos(1, 1, i))
+        )
+      );
+    }
+    this.data = output;
   };
   public static makeSin = (a: number, f: number, theta: number = 0) => {
     return -a * Math.sin(f * theta);
@@ -101,13 +194,15 @@ export class FourierDemo {
     this.drawGrid();
     this.data.forEach((val: Vector) => {
       this.canvas.circle({
-        pos: new Vector(this.origin.x + (val.x*this.scale), this.origin.y + (val.y*this.scale)),
+        pos: new Vector(
+          this.origin.x + val.x * this.scale,
+          this.origin.y + val.y * this.scale
+        ),
         radius: 1,
         fill: true,
         fillColor: "red",
       });
     });
-    
   };
   private animate = () => {
     this.draw();
