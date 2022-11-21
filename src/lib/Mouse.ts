@@ -4,7 +4,8 @@ import { Vector } from "./Vector";
 export class Mouse extends PhysicsObject {
   public click: Boolean = false;
   public offset: Vector;
-  public mass: 1;
+  public mass:number = 1;
+  public wheel:number = 0
   constructor() {
     super();
     this.pos = new Vector();
@@ -30,5 +31,12 @@ export class Mouse extends PhysicsObject {
   public setOffset = (val:DOMRect)=>{
     this.offset.x = val.left;
     this.offset.y = val.top;
+  }
+  public handleWheel = (e:WheelEvent)=>{
+    if(e.deltaY>0){
+      this.wheel+=1
+    }else if(e.deltaY <0 ){
+      this.wheel-=1
+    }
   }
 }
