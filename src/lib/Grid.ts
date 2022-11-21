@@ -19,7 +19,7 @@ class Cell {
     this.select = false;
   };
   public checkIntersection = (vec: Vector) => {
-    const checkDistance = this.center.dist(vec) < this.size.x / 2 + 3;
+    const checkDistance = this.center.dist(vec) <= this.size.x * 2;
     if (!checkDistance) return;
     const checkLeft = vec.x > this.pos.x;
     const checkRight = vec.x < this.pos.x + this.size.x;
@@ -27,7 +27,6 @@ class Cell {
     const checkBottom = vec.y < this.pos.y + this.size.y;
     if (checkLeft && checkRight && checkTop && checkBottom) {
       return true;
-      console.log("sjnv")
     }
   };
   public draw = (c: Canvas) => {
@@ -43,27 +42,27 @@ class Cell {
       radius: this.size.x / 4,
       fill: this.select,
       stroke: true,
-      strokeColor: this.select ? "rgba(255,0,0,0.5)" : "rgb(255,0,0)",
+      strokeColor: this.select ? "rgba(0,255,0,1)" : "rgb(255,0,0)",
     });
   };
 }
 
 export class Grid {
-  private size: Vector = new Vector(10, 10);
+  private size: Vector = new Vector(5, 5);
   private canvas: Canvas = new Canvas();
   private cells: Cell[] = [];
-  private mouse:Mouse = new Mouse()
+  private mouse: Mouse = new Mouse();
   constructor(parent: HTMLElement = document.body) {
     parent.append(this.canvas.dom);
     for (
       var i = 0;
-      i <= this.canvas.width;
-      i += this.canvas.width / this.size.x
+      i <= this.canvas.height;
+      i += this.canvas.height / this.size.y
     ) {
       for (
         var j = 0;
-        j <= this.canvas.height;
-        j += this.canvas.height / this.size.y
+        j <= this.canvas.width;
+        j += this.canvas.width / this.size.x
       ) {
         this.cells.push(
           new Cell(
@@ -76,21 +75,30 @@ export class Grid {
         );
       }
     }
-    this.mouse.setOffset(this.canvas.dom.getBoundingClientRect())
-    window.addEventListener('mousemove',(e:MouseEvent)=>this.mouse.move)
+    this.mouse.setOffset(this.canvas.dom.getBoundingClientRect());
+    this.canvas.dom.addEventListener("mousemove", (e: MouseEvent) => {
+      this.mouse.move(e);
+    });
   }
   private draw = () => {
+    this.canvas.clear();
+    this.canvas.circle({
+      pos: this.mouse.pos,
+      radius: 10,
+      fillColor: "red",
+      fill: true,
+    });
+    this.cells.forEach((cell: Cell) => {
+      cell.checkIntersection(this.mouse.pos)
+        ? cell.setSelect()
+        : cell.unsetSelect();
+    });
     this.cells.forEach((c: Cell) => {
       c.draw(this.canvas);
     });
   };
   public animate = () => {
-    this.canvas.clear();
-    this.cells.forEach((cell:Cell)=>{
-        cell.checkIntersection(this.mouse.pos) ? cell.setSelect() : cell.unsetSelect();
-    })
     this.draw();
     requestAnimationFrame(this.animate);
   };
-  
 }
