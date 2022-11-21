@@ -13,6 +13,7 @@ export class Ball extends PhysicsObject {
   color: string;
   forces: Vector[];
   mass: number;
+  foe: number;
   /**
    * Create a new ball object by passing a position.
    * @param pos
@@ -24,6 +25,7 @@ export class Ball extends PhysicsObject {
     this.acc = new Vector();
     this.size = Math.random() * 10 + 2;
     this.mass = this.size * 100;
+    this.foe = this.size*10
     this.color = `rgb(${Math.floor(Math.random() * 255)},${Math.floor(
       Math.random() * 255
     )},${Math.floor(Math.random() * 255)})`;
@@ -122,6 +124,14 @@ export class Ball extends PhysicsObject {
     vel.scalar(1.1);
     c.line(this.pos, vel);
   };
+  public drawExposureBubble = ()=>{}
+
+  public setColor = (val:string)=>{
+    this.color = val
+  }
+  public setSize = (val:number)=>{
+    this.size = val
+  }
   /**
    * ## Find distance between 2 ball
    * @param b Ball s
