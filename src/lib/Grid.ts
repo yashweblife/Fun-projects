@@ -1,4 +1,5 @@
 import { Vector, Canvas } from "./";
+import { Mouse } from "./Mouse";
 
 class Cell {
   private pos: Vector;
@@ -12,20 +13,23 @@ class Cell {
     this.center.scalar(1 / 2);
   }
   public setSelect = () => {
-    this.select = !this.select;
-  }
-  public checkIntersection = (vec:Vector)=>{
-    const check = (this.center.dist(vec)<this.size.x/2+3)
-    if(!check) return
-    const check1 = (vec.x>this.pos.x)
-    const check2 = (vec.x<this.pos.x + this.size.x)
-    const check3 = (vec.y>this.pos.y)
-    const check4 = (vec.y<this.pos.y + this.size.y)
-    if(check1 && check2 && check3 && check4){
-        return(true)
+    this.select = true;
+  };
+  public unsetSelect = () => {
+    this.select = false;
+  };
+  public checkIntersection = (vec: Vector) => {
+    const checkDistance = this.center.dist(vec) < this.size.x / 2 + 3;
+    if (!checkDistance) return;
+    const checkLeft = vec.x > this.pos.x;
+    const checkRight = vec.x < this.pos.x + this.size.x;
+    const checkTop = vec.y > this.pos.y;
+    const checkBottom = vec.y < this.pos.y + this.size.y;
+    if (checkLeft && checkRight && checkTop && checkBottom) {
+      return true;
+      console.log("sjnv")
     }
-
-  }
+  };
   public draw = (c: Canvas) => {
     c.rect({
       pos: this.pos,
@@ -37,9 +41,9 @@ class Cell {
     c.circle({
       pos: this.center,
       radius: this.size.x / 4,
-      fill: false,
+      fill: this.select,
       stroke: true,
-      strokeColor: "rgba(255,0,0,0.5)",
+      strokeColor: this.select ? "rgba(255,0,0,0.5)" : "rgb(255,0,0)",
     });
   };
 }
@@ -48,6 +52,7 @@ export class Grid {
   private size: Vector = new Vector(10, 10);
   private canvas: Canvas = new Canvas();
   private cells: Cell[] = [];
+  private mouse:Mouse = new Mouse()
   constructor(parent: HTMLElement = document.body) {
     parent.append(this.canvas.dom);
     for (
@@ -71,6 +76,8 @@ export class Grid {
         );
       }
     }
+    this.mouse.setOffset(this.canvas.dom.getBoundingClientRect())
+    window.addEventListener('mousemove',(e:MouseEvent)=>this.mouse.move)
   }
   private draw = () => {
     this.cells.forEach((c: Cell) => {
@@ -79,7 +86,11 @@ export class Grid {
   };
   public animate = () => {
     this.canvas.clear();
+    this.cells.forEach((cell:Cell)=>{
+        cell.checkIntersection(this.mouse.pos) ? cell.setSelect() : cell.unsetSelect();
+    })
     this.draw();
     requestAnimationFrame(this.animate);
   };
+  
 }
