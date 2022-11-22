@@ -23,5 +23,7 @@ import {
 } from "./lib";
 import { FourierDemo } from "./projects";
 
-var app = new PowerRNGDemo()
-app.app()
+var demo = new GeneticAlgoDemo()
+demo.app()
+
+
