@@ -10,6 +10,7 @@ import { ImageClassifierDemo } from "./projects";
 import { LinearRegressionDemo } from "./projects";
 import { RayCastingDemo } from "./projects";
 import { GeneticAlgoDemo } from "./projects";
+import { PowerRNGDemo } from "./projects";
 import {
   Graph,
   Vector,
@@ -22,5 +23,5 @@ import {
 } from "./lib";
 import { FourierDemo } from "./projects";
 
-var test=  new Grid()
-test.animate()
+var app = new PowerRNGDemo()
+app.app()
