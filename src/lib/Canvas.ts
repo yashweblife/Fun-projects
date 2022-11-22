@@ -120,4 +120,12 @@ export class Canvas {
     let img:ImageData = this.ctx.getImageData(0,0,this.width, this.height,{willReadFrequently:true} as ImageDataSettings)
     return(img)
   }
+  public pixel = (pos:Vector, color:Vector)=>{
+    this.ctx.beginPath()
+    this.ctx.fillStyle = `rgb(${color.x}, ${color.y},${color.z})`
+    this.ctx.rect(pos.x,pos.y, 1,1)
+    this.ctx.closePath()
+    this.ctx.fill()
+
+  }
 }
