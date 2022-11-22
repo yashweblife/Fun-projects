@@ -99,7 +99,7 @@ export class GeneticAlgoDemo {
     this.canvas = new Canvas()
     this.canvas.setSize(window.innerWidth, window.innerHeight)
     this.portal = new Portal(
-      new Vector(100, 100),
+      new Vector(100, 200),
       new Vector(this.canvas.width / 2, this.canvas.height / 2)
     )
     this.badPortal = new Portal(
@@ -110,6 +110,7 @@ export class GeneticAlgoDemo {
     this.target = new Ball(
       new Vector(this.canvas.width, this.canvas.height / 2)
     )
+    this.target.setSize(100)
     for (var i = 0; i < this.populationSize; i++) {
       const a = new Agent(new Vector(10, this.canvas.height / 2))
       a.init()
