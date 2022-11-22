@@ -13,7 +13,7 @@ export class FourierDemo {
   private scale: number = 1;
   constructor(parent: HTMLElement = document.body) {
     parent.append(this.canvas.dom);
-    this.canvas.setSize(1000, 500);
+    this.canvas.setSize(500, 500);
     this.setOriginToCenter();
     this.recalib();
   }
