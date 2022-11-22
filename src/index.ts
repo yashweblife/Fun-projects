@@ -19,11 +19,21 @@ import {
   benchAverage,
   testIf,
   Canvas,
-  Grid
+  Grid,
 } from "./lib";
 import { FourierDemo } from "./projects";
 
-var demo = new GeneticAlgoDemo()
-demo.app()
-
-
+export {
+  RopeDemo,
+  CollisionDetectionDemo,
+  BrownianMotionDemo,
+  CompressorDemo,
+  GravityDemo,
+  SortingDemo,
+  DataStructureDemo,
+  ImageClassifierDemo,
+  LinearRegressionDemo,
+  RayCastingDemo,
+  GeneticAlgoDemo,
+  PowerRNGDemo,
+};
