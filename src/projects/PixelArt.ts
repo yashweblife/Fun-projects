@@ -4,7 +4,7 @@ class Grid {
   private shape: Vector;
   constructor() {}
 }
-class Pixel {
+class Cell {
   private pos: Vector;
   private size: Vector;
   private color: string;
