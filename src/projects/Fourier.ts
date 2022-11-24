@@ -217,7 +217,6 @@ export class FourierDemo {
         )
       );
     }
-  
   };
   private animate = () => {
     this.draw();
