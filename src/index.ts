@@ -37,3 +37,21 @@ export {
   GeneticAlgoDemo,
   PowerRNGDemo,
 };
+
+var f = new FourierDemo();
+f.setScale(10);
+f.plotVector(() => {
+  const knots: number = 3;
+  const output: Vector[] = [];
+  for (var i = 0; i <= Math.PI; i += 0.01) {
+    output.push(
+      new Vector(
+        FourierDemo.makeSin(FourierDemo.makeSin(10, knots, i), 1, i),
+        FourierDemo.makeCos(FourierDemo.makeSin(10, knots, i), 1, i)
+      )
+    );
+  }
+  return output;
+});
+
+f.app();
