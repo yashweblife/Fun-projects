@@ -14,11 +14,14 @@ This is a collection of all the utility classes.
   - Edge
   - Bound
   - Shape
-- Graph
-- Matrix
-- Slider
-- Wall
-- Ball
+- Graph [▶️](./Graph.ts)
+- Matrix [▶️](./Matrix.ts)
+- Slider[▶️](./Slider.ts)
+- Wall [▶️](./Wall.ts)
+- Ball [▶️](./Ball.ts)
+- Grid [▶️](./Grid.ts)
+- DOM [▶️](./DOM.ts)
+
 # A Simple Explaination
 
 ## Vector
