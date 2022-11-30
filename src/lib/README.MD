@@ -14,7 +14,11 @@ This is a collection of all the utility classes.
   - Edge
   - Bound
   - Shape
-
+- Graph
+- Matrix
+- Slider
+- Wall
+- Ball
 # A Simple Explaination
 
 ## Vector
