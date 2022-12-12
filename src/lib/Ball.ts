@@ -1,7 +1,6 @@
-import { Vector } from "./Vector";
 import { Canvas } from "./Canvas";
-import { Mouse } from "./Mouse";
 import { PhysicsObject } from "./PhysicsObject";
+import { Vector } from "./Vector";
 /**
  * ## Ball
  * The Ball class represents a physics object with various properties.
@@ -9,10 +8,10 @@ import { PhysicsObject } from "./PhysicsObject";
  * It also has other parameters that affect its appearance.
  */
 export class Ball extends PhysicsObject {
-  size: number;
+  //size: number;
   color: string;
   forces: Vector[];
-  mass: number;
+  //mass: number;
   foe: number;
   /**
    * Create a new ball object by passing a position.
