@@ -184,6 +184,18 @@ export class Vector {
     this.x = this.x * cos - this.y * sin;
     this.y = this.x * sin + this.y * cos;
   };
+  public rotateAlongX = (angle: number) => {
+    this.y = this.y * Math.cos(angle) - this.z * Math.sin(angle);
+    this.z = this.y * Math.sin(angle) + this.z * Math.cos(angle);
+  };
+  public rotateAlongY = (angle: number) => {
+    this.x = this.x * Math.cos(angle) + this.z * Math.sin(angle);
+    this.z = this.x * -Math.sin(angle) + this.z * Math.cos(angle);
+  };
+  public rotateAlongZ = (angle: number) => {
+    this.x = this.x * Math.cos(angle) - this.y * Math.sin(angle);
+    this.y = this.x * Math.sin(angle) - this.y * Math.cos(angle);
+  };
   public getNegative = () => {
     return new Vector(-this.x, -this.y, -this.z);
   };
