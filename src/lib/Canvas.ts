@@ -1,4 +1,3 @@
-import { Geometry } from "./Geometry";
 import { Vector } from "./Vector";
 interface CircleInterface {
   pos: Vector;
@@ -74,8 +73,8 @@ export class Canvas {
     fill = true,
     angle = 0,
   }: RectInterface) => {
-    this.ctx.save()
-    this.ctx.rotate(angle)
+    this.ctx.save();
+    this.ctx.rotate(angle);
     this.ctx.beginPath();
     this.ctx.fillStyle = fillColor;
     this.ctx.strokeStyle = strokeColor;
@@ -85,7 +84,7 @@ export class Canvas {
     if (stroke === true) this.ctx.stroke();
     this.ctx.restore();
   };
-  public line = (v1: Vector, v2: Vector, color:string = 'rgba(0,0,0,0.5)') => {
+  public line = (v1: Vector, v2: Vector, color: string = "rgba(0,0,0,0.5)") => {
     this.ctx.beginPath();
     this.ctx.strokeStyle = color;
     this.ctx.moveTo(v1.x, v1.y);
@@ -94,17 +93,28 @@ export class Canvas {
     this.ctx.stroke();
   };
   //public reverseRect = ({pos, size, fillColor, strokeColor, stroke, fill, angle})=>{}
-  public fillPath = (vec:Vector[],color:string = "red") => {
-    this.ctx.beginPath()
-    this.ctx.moveTo(vec[0].x, vec[0].y)
-    for(var i=1;i<vec.length;i++){
-      const v2 = vec[i]
-      this.ctx.lineTo(v2.x, v2.y)
+  public fillPath = (vec: Vector[], color: string = "red") => {
+    this.ctx.beginPath();
+    this.ctx.moveTo(vec[0].x, vec[0].y);
+    for (var i = 1; i < vec.length; i++) {
+      const v2 = vec[i];
+      this.ctx.lineTo(v2.x, v2.y);
     }
-    this.ctx.closePath()
+    this.ctx.closePath();
     this.ctx.fillStyle = color;
-    this.ctx.fill()
+    this.ctx.fill();
   };
+  public path = (vec: Vector[], color: string = "black") => {
+    this.ctx.beginPath();
+    this.ctx.moveTo(vec[0].x, vec[0].y);
+    for (var i = 1; i < vec.length; i++) {
+      const v2 = vec[i];
+      this.ctx.lineTo(v2.x, v2.y);
+    }
+    this.ctx.closePath();
+    this.ctx.stroke();
+  };
+
   public clear = () => {
     this.ctx.clearRect(0, 0, this.width, this.height);
   };
@@ -113,19 +123,21 @@ export class Canvas {
     this.ctx.rect(0, 0, this.width, this.height);
     this.ctx.fill();
   };
-  public drawImage = (img:HTMLVideoElement)=>{
-    this.ctx.drawImage(img, 0, 0, this.width, this.height)
-  }
-  public getImageData = ():ImageData=>{
-    let img:ImageData = this.ctx.getImageData(0,0,this.width, this.height,{willReadFrequently:true} as ImageDataSettings)
-    return(img)
-  }
-  public pixel = (pos:Vector, color:Vector)=>{
-    this.ctx.beginPath()
-    this.ctx.fillStyle = `rgb(${color.x}, ${color.y},${color.z})`
-    this.ctx.rect(pos.x,pos.y, 1,1)
-    this.ctx.closePath()
-    this.ctx.fill()
-
-  }
+  public drawImage = (img: HTMLVideoElement) => {
+    this.ctx.drawImage(img, 0, 0, this.width, this.height);
+  };
+  public getImageData = (): ImageData => {
+    let img: ImageData = this.ctx.getImageData(0, 0, this.width, this.height, {
+      willReadFrequently: true,
+    } as ImageDataSettings);
+    return img;
+  };
+  public pixel = (pos: Vector, color: Vector) => {
+    this.ctx.beginPath();
+    this.ctx.fillStyle = `rgb(${color.x}, ${color.y},${color.z})`;
+    const size = Math.abs(pos.z)/100;
+    this.ctx.rect(pos.x, pos.y, size, size);
+    this.ctx.closePath();
+    this.ctx.fill();
+  };
 }
