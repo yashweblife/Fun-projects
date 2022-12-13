@@ -1,28 +1,18 @@
-import "./styles/index.scss";
-import { RopeDemo } from "./projects";
-import { CollisionDetectionDemo } from "./projects";
-import { BrownianMotionDemo } from "./projects";
-import { CompressorDemo } from "./projects";
-import { GravityDemo } from "./projects";
-import { SortingDemo } from "./projects";
-import { DataStructureDemo } from "./projects";
-import { ImageClassifierDemo } from "./projects";
-import { LinearRegressionDemo } from "./projects";
-import { RayCastingDemo } from "./projects";
-import { GeneticAlgoDemo } from "./projects";
-import { PowerRNGDemo } from "./projects";
 import {
-  Graph,
-  Vector,
-  Matrix,
-  bench,
-  benchAverage,
-  testIf,
-  Canvas,
-  Grid,
-} from "./lib";
-import { FourierDemo } from "./projects";
-
+  BrownianMotionDemo,
+  CollisionDetectionDemo,
+  CompressorDemo,
+  DataStructureDemo,
+  GeneticAlgoDemo,
+  GravityDemo,
+  ImageClassifierDemo,
+  LinearRegressionDemo,
+  PowerRNGDemo,
+  RayCastingDemo,
+  RopeDemo,
+  SortingDemo
+} from "./projects";
+import "./styles/index.scss";
 export {
   RopeDemo,
   CollisionDetectionDemo,
@@ -38,20 +28,40 @@ export {
   PowerRNGDemo,
 };
 
-var f = new FourierDemo();
-f.setScale(10);
-f.plotVector(() => {
-  const knots: number = 3;
-  const output: Vector[] = [];
-  for (var i = 0; i <= Math.PI; i += 0.01) {
-    output.push(
-      new Vector(
-        FourierDemo.makeSin(FourierDemo.makeSin(10, knots, i), 1, i),
-        FourierDemo.makeCos(FourierDemo.makeSin(10, knots, i), 1, i)
-      )
-    );
-  }
-  return output;
-});
-
-f.app();
+  import { Vector } from "./lib";
+  import { Body, World3D } from "./lib/3D";
+let pos = 100;
+const w = new World3D();
+const box: Vector[][] = [
+  [
+    new Vector(pos, pos, pos),
+    new Vector(pos, -pos, pos),
+    new Vector(-pos, -pos, pos),
+    new Vector(-pos, pos, pos),
+  ],
+  [
+    new Vector(-pos, pos, pos),
+    new Vector(-pos, -pos, pos),
+    new Vector(-pos, -pos, -pos),
+    new Vector(-pos, pos, -pos),
+  ],
+  [
+    new Vector(-pos, pos, -pos),
+    new Vector(-pos, -pos, -pos),
+    new Vector(pos, -pos, -pos),
+    new Vector(pos, pos, -pos),
+  ],
+  [
+    new Vector(pos, pos, -pos),
+    new Vector(pos, -pos, -pos),
+    new Vector(pos, -pos, pos),
+    new Vector(pos, pos, pos),
+  ],
+];
+const bod = new Body(box, new Vector(200, 200));
+w.addBody(bod);
+// bod.rotateX(15*(Math.PI/180))
+//  bod.rotateY(45*(Math.PI/180))
+const angle = 0.01;
+bod.addRotation(new Vector(0, (angle * Math.PI) / 180));
+w.animate();
