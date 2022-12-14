@@ -61,8 +61,8 @@ export class Body {
       });
     });
   };
-  public project = (p:Vector)=>{
-    const d = 200;
+  public project = (p:Vector,dist:number)=>{
+    const d = dist;
     const r = d/p.x
     return(new Vector(r*p.z, r*p.y))
   }
@@ -70,21 +70,11 @@ export class Body {
     
     this.points.forEach((slice: Vector[]) => {
       c.ctx.beginPath();
-      const start = Vector.VecFromAdd(slice[0], this.center)
-      const p = this.project(start)
-      c.ctx.moveTo(p.x+cam.x, -p.y+cam.y);
+      const start =this.project(Vector.VecFromAdd(slice[0], this.center),dist)
+      c.ctx.moveTo(start.x+cam.x, -start.y+cam.y);
       for (let i = 1; i < slice.length; i++) {
-        const point = Vector.VecFromAdd(slice[i],this.center)
-        const pro = this.project(point)
-        c.ctx.lineTo(pro.x+cam.x, -pro.y+cam.y);
-        // c.ctx.arc(
-        //   point.x + this.center.x,
-        //   point.y + this.center.y,
-        //   (Math.sin(point.z) / point.mag) ** 2,
-        //   0,
-        //   Math.PI * 2,
-        //   false
-        // );
+        const point = this.project(Vector.VecFromAdd(slice[i],this.center),dist)
+        c.ctx.lineTo(point.x+cam.x, -point.y+cam.y);
       }
       c.ctx.fillStyle = `rgba(${Math.floor(
         100 + (255 * slice[0].z) / slice[0].mag
@@ -106,8 +96,8 @@ export class World3D {
   private canvas: Canvas = new Canvas();
   private bodies: Body[] = [];
   private scale: number = 10;
-  private camera: Vector = new Vector(this.canvas.width/2, this.canvas.height/2);
-  private projection_distance: number = 10;
+  private camera: Vector = new Vector(this.canvas.width/2+200, this.canvas.height/2+200);
+  private projection_distance: number = 50;
   constructor(parent: HTMLElement = document.body) {
     parent.appendChild(this.canvas.dom);
     this.canvas.setSize(700, 700);
