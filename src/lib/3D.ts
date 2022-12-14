@@ -61,26 +61,36 @@ export class Body {
       });
     });
   };
-  public draw = (c: Canvas, scale: number = 10) => {
+  public project = (p:Vector)=>{
+    const d = 200;
+    const r = d/p.x
+    return(new Vector(r*p.z, r*p.y))
+  }
+  public draw = (c: Canvas, scale: number = 10, cam:Vector, dist:number) => {
+    
     this.points.forEach((slice: Vector[]) => {
       c.ctx.beginPath();
-      c.ctx.moveTo(slice[0].x + this.center.x, slice[0].y + this.center.y);
+      const start = Vector.VecFromAdd(slice[0], this.center)
+      const p = this.project(start)
+      c.ctx.moveTo(p.x+cam.x, -p.y+cam.y);
       for (let i = 1; i < slice.length; i++) {
-        c.ctx.lineTo(slice[i].x + this.center.x, slice[i].y + this.center.y);
-        c.ctx.arc(
-          slice[i].x + this.center.x,
-          slice[i].y + this.center.y,
-          (Math.sin(slice[i].z)/slice[i].mag)**2,
-          0,
-          Math.PI * 2,
-          false
-        );
+        const point = Vector.VecFromAdd(slice[i],this.center)
+        const pro = this.project(point)
+        c.ctx.lineTo(pro.x+cam.x, -pro.y+cam.y);
+        // c.ctx.arc(
+        //   point.x + this.center.x,
+        //   point.y + this.center.y,
+        //   (Math.sin(point.z) / point.mag) ** 2,
+        //   0,
+        //   Math.PI * 2,
+        //   false
+        // );
       }
       c.ctx.fillStyle = `rgba(${Math.floor(
-        100+(255 * slice[0].z) / slice[0].mag
-      )},0,0,1)`;
-      c.ctx.closePath();
+        100 + (255 * slice[0].z) / slice[0].mag
+      )},0,0,0.2)`;
       c.ctx.fill();
+      c.ctx.closePath();
       c.ctx.stroke();
     });
   };
@@ -96,6 +106,8 @@ export class World3D {
   private canvas: Canvas = new Canvas();
   private bodies: Body[] = [];
   private scale: number = 10;
+  private camera: Vector = new Vector(this.canvas.width/2, this.canvas.height/2);
+  private projection_distance: number = 10;
   constructor(parent: HTMLElement = document.body) {
     parent.appendChild(this.canvas.dom);
     this.canvas.setSize(700, 700);
@@ -152,7 +164,7 @@ export class World3D {
   };
   public draw = () => {
     this.bodies.forEach((body: Body) => {
-      body.draw(this.canvas, this.scale);
+      body.draw(this.canvas, this.scale, this.camera, this.projection_distance);
     });
   };
   public animate = () => {
