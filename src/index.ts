@@ -58,10 +58,10 @@ const box: Vector[][] = [
     new Vector(pos, pos, pos),
   ],
 ];
-const bod = new Body(box, new Vector(200, 200));
+const bod = new Body(box, new Vector(350, 350));
 w.addBody(bod);
 // bod.rotateX(10 * (Math.PI / 180));
 // bod.rotateY(10 * (Math.PI / 180));
 const angle = 0.01;
-bod.addRotation(new Vector(0,(angle*Math.PI)/180));
+//bod.addRotation(new Vector(0,0,(angle*Math.PI)/180));
 w.animate();
