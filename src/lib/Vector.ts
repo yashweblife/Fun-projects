@@ -194,7 +194,7 @@ export class Vector {
   };
   public rotateAlongZ = (angle: number) => {
     this.x = this.x * Math.cos(angle) - this.y * Math.sin(angle);
-    this.y = this.x * Math.sin(angle) - this.y * Math.cos(angle);
+    this.y = this.x * Math.sin(angle) + this.y * Math.cos(angle);
   };
   public getNegative = () => {
     return new Vector(-this.x, -this.y, -this.z);
