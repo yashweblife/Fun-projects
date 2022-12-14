@@ -32,7 +32,6 @@ export class Body {
     this.points.forEach((slice: Vector[]) => {
       slice.forEach((point: Vector) => {
         point.rotateAlongX(angle);
-        point.add(this.center);
       });
     });
   };
@@ -43,7 +42,6 @@ export class Body {
     this.points.forEach((slice: Vector[]) => {
       slice.forEach((point: Vector) => {
         point.rotateAlongY(angle);
-        point.add(this.center);
       });
     });
   };
@@ -59,8 +57,7 @@ export class Body {
       slice.forEach((point: Vector) => {
         point.rotateAlongX(angle.x);
         point.rotateAlongY(angle.y);
-        // point.rotateAlongZ(angle.z);
-        //point.add(this.center)
+        point.rotateAlongZ(angle.z);
       });
     });
   };
@@ -69,18 +66,21 @@ export class Body {
       c.ctx.beginPath();
       c.ctx.moveTo(slice[0].x + this.center.x, slice[0].y + this.center.y);
       for (let i = 1; i < slice.length; i++) {
-        c.ctx.lineTo(
-          slice[i].x +
-            (this.center.x + scale * Math.sin(slice[i].z / slice[i].mag)),
-          slice[i].y +
-            (this.center.y + scale * Math.sin(slice[i].z / slice[i].mag))
+        c.ctx.lineTo(slice[i].x + this.center.x, slice[i].y + this.center.y);
+        c.ctx.arc(
+          slice[i].x + this.center.x,
+          slice[i].y + this.center.y,
+          (Math.sin(slice[i].z)/slice[i].mag)**2,
+          0,
+          Math.PI * 2,
+          false
         );
       }
-      c.ctx.closePath();
       c.ctx.fillStyle = `rgba(${Math.floor(
-        (255 * slice[0].z) / slice[0].mag
+        100+(255 * slice[0].z) / slice[0].mag
       )},0,0,1)`;
-      //c.ctx.fill();
+      c.ctx.closePath();
+      c.ctx.fill();
       c.ctx.stroke();
     });
   };
@@ -95,7 +95,7 @@ export class Body {
 export class World3D {
   private canvas: Canvas = new Canvas();
   private bodies: Body[] = [];
-  private scale: number = 2;
+  private scale: number = 10;
   constructor(parent: HTMLElement = document.body) {
     parent.appendChild(this.canvas.dom);
     this.canvas.setSize(700, 700);
