@@ -63,5 +63,5 @@ w.addBody(bod);
 // bod.rotateX(15*(Math.PI/180))
 //  bod.rotateY(45*(Math.PI/180))
 const angle = 0.01;
-bod.addRotation(new Vector(0, (angle * Math.PI) / 180));
+bod.addRotation(new Vector((angle*Math.PI)/180, (angle*Math.PI)/180));
 w.animate();
